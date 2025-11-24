@@ -2,6 +2,7 @@
 Our Data Structures Project.
 
 ## Our Repo Hierarchy:
+```
   SmartCity/
    ├── main.cpp
    ├── DataStructures/
@@ -21,3 +22,4 @@ Our Data Structures Project.
    │   └── Population.h/cpp
    └── Utils/
        └── Helper functions
+```
