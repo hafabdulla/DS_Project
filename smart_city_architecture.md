@@ -2,7 +2,7 @@
 
 ## Overview
 
-We follow a strict layered architecture with three core layers: Presentation, Domain, and Foundation.
+We follow a strict layered architecture with four core layers: Presentation, Infrastructure, Domain, and Foundation.
 
 ## Core Layers
 
@@ -11,7 +11,12 @@ We follow a strict layered architecture with three core layers: Presentation, Do
 * **Role:** Application entry point and User Interface (CLI) logic.
 * **Responsibilities:** Handles menus, prompts, accepts user input (`cin`), calls the appropriate Services, and displays results (`cout`).
 
-### 2. Domain Layer
+### 2. Persistence Layer
+
+* **Role:** Handles the persistence logic (files).
+* **Responsibilities:** Implements the Domain's Repository Interfaces (e.g., `CsvBusRepository`). Handles file I/O (`fstream`), parses CSVs, and hydrates Model objects.
+
+### 3. Domain Layer
 
 This layer encapsulates the core logic and data of the system. Note that each module folder (e.g.,  `Transport`, `Medical`) represents the domain layer.
 
@@ -27,7 +32,7 @@ Services and Model sub-layers are logical divisions and not represented in the d
 * **Role:** Represents specific data entities.
 * **Responsibilities:** Defines classes (e.g., `Bus`, `Citizen`, `Hospital`) and uses Foundation structures to store internal data.
 
-### 3. Foundation Layer
+### 4. Foundation Layer
 
 * **Role:** Bedrock of the system containing generic, reusable code.
 * **Responsibilities:** Pure implementations of Data Structures (LinkedList, Graph, etc.) and Generic Algorithms (Sorting) with zero domain knowledge.
