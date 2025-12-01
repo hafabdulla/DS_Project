@@ -144,7 +144,7 @@ inline LinkedList<T>::LinkedList(LinkedList<T>&& other) noexcept
 template<typename T>
 inline LinkedList<T>& LinkedList<T>::operator=(LinkedList<T> other)
 {
-    swap(*this, other);
+    swap(other);
     return *this;
 }
 

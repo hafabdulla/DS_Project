@@ -1,8 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{ae191d2f-9405-4263-a443-ab275f2f158f}</UniqueIdentifier>
+    <Filter Include="Transport">
+      <UniqueIdentifier>{a4d7658e-9916-4ee1-ba26-83d657aeb990}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\src">
+      <UniqueIdentifier>{274673b8-d0ca-4b9e-91ab-282c5c032064}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\Domain\Transport\Bus.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Transport\IBusRepository.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

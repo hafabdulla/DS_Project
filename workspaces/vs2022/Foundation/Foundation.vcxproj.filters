@@ -5,4 +5,9 @@
       <UniqueIdentifier>{a8e616a3-4c38-4d40-b1b1-60c74e7fa909}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\Foundation\LinkedList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
