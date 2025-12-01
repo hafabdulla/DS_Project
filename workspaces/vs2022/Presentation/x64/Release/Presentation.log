@@ -1,0 +1,8 @@
+﻿  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 296 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Presentation.vcxproj -> D:\Projects\ds-fall-25-project\DS_Project\workspaces\vs2022\x64\Release\Presentation.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

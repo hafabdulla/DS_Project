@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\..\source\Domain\Transport\IBusRepository.h" />
     <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

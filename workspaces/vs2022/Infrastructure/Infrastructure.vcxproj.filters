@@ -5,4 +5,12 @@
       <UniqueIdentifier>{8152c99c-99cd-4e9c-99b2-0c20d7a55953}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\source\Infrastructure\CCsvBusRepository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvBusRepository.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

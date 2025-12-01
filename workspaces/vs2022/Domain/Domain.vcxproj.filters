@@ -19,4 +19,9 @@
       <Filter>Transport</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp">
+      <Filter>Transport\src</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

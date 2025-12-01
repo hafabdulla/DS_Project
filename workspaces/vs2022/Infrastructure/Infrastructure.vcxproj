@@ -74,9 +74,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Foundation\Foundation.vcxproj">
-      <Project>{2823dbae-bde6-4f8c-ba0e-effcf38e4976}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\..\..\source\Infrastructure\CCsvBusRepository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvBusRepository.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
