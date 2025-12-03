@@ -11,12 +11,12 @@
 #include <sstream>
 #include <iostream>
 
-CsvBusRepository::CsvBusRepository(const std::string& filePath)
+CCsvBusRepository::CCsvBusRepository(const std::string& filePath)
     : m_FilePath(filePath)
 {
 }
 
-LinkedList<Bus> CsvBusRepository::LoadAll()
+LinkedList<Bus> CCsvBusRepository::LoadAll()
 {
     LinkedList<Bus> buses;
     std::ifstream file(m_FilePath);
@@ -59,12 +59,7 @@ LinkedList<Bus> CsvBusRepository::LoadAll()
     return buses;
 }
 
-Bus* CsvBusRepository::FindByID(const std::string& id)
-{
-    return nullptr;
-}
-
-void CsvBusRepository::ParseRoute(Bus& bus, const std::string& routeStr) const
+void CCsvBusRepository::ParseRoute(Bus& bus, const std::string& routeStr) const
 {
     std::string temp = routeStr;
     std::string delimiter = " > ";

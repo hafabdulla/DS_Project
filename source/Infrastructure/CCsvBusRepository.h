@@ -12,7 +12,7 @@
 #include <string>
 #include <Domain/Transport/IBusRepository.h>
 
-class CsvBusRepository : public IBusRepository
+class CCsvBusRepository : public IBusRepository
 {
 private:
     std::string m_FilePath;
@@ -20,10 +20,9 @@ private:
     void ParseRoute(Bus& bus, const std::string& routeStr) const;
 
 public:
-    explicit CsvBusRepository(const std::string& filePath);
+    explicit CCsvBusRepository(const std::string& filePath);
 
     LinkedList<Bus> LoadAll() override;
-    Bus* FindByID(const std::string& id) override;
 };
 
 #endif // !GUARD_CCSVREPOSITORY_H

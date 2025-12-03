@@ -19,7 +19,6 @@ public:
     virtual ~IBusRepository() = default;
 
     virtual LinkedList<Bus> LoadAll() = 0;
-    virtual Bus* FindByID(const std::string& id) = 0;
 };
 
 #endif // !GUARD_IBUSREPOSITORY_H
