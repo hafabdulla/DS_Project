@@ -7,6 +7,12 @@
     <Filter Include="Transport\src">
       <UniqueIdentifier>{274673b8-d0ca-4b9e-91ab-282c5c032064}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Population">
+      <UniqueIdentifier>{9d12761f-7c6f-4e51-9010-2c72b616b64b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Population\src">
+      <UniqueIdentifier>{64d779bf-c1ae-4bbc-b9df-bdd4db7b59c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\Domain\Transport\Bus.h">
@@ -18,10 +24,34 @@
     <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h">
       <Filter>Transport</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Population\PopulationService.h">
+      <Filter>Population</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Population\IPersonRepository.h">
+      <Filter>Population</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Population\Person.h">
+      <Filter>Population</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\Domain\Population\CNICHash.h">
+      <Filter>Population</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp">
       <Filter>Transport\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Domain\Population\src\PopulationService.cpp">
+      <Filter>Population\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Domain\Transport\src\Bus.cpp">
+      <Filter>Transport\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Domain\Population\src\Person.cpp">
+      <Filter>Population\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Domain\Population\src\CNICHash.cpp">
+      <Filter>Population\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

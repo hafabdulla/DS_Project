@@ -2,86 +2,88 @@
  * @file   main.cpp
  * @brief  Application Entry Point (Presentation Layer).
  *
+ * @details Initializes the Population module and runs UC-H6 (Search Citizen by CNIC).
+ *
  * @author Fahad Hassan
- * @date   1 11 2025
+ * @date   03 12 2025
  *********************************************************************/
 
 #include <iostream>
 #include <string>
-#include <Domain/Transport/TransportService.h>
-#include <Domain/Transport/IBusRepository.h>
-#include <Infrastructure/CCsvBusRepository.h>
+
+ // Domain Headers
+#include "Domain/Population/PopulationService.h"
+#include "Domain/Population/IPersonRepository.h"
+
+// Infrastructure Header
+#include "Infrastructure/CCsvPersonRepository.h"
 
 using namespace std;
 
-void RunTransportModule(TransportService& service)
-{
-    cout << "\n==========================================" << endl;
-    cout << "  TRANSPORT MODULE: UC-T9 Display Route" << endl;
-    cout << "==========================================" << endl;
-
-    // List available bus IDs for testing reference based on buses.csv
-    cout << "Available Buses: B101, B102, B201, B305, B402" << endl;
-
-    string inputID;
-    cout << "Enter Bus ID (e.g., B101): ";
-    cin >> inputID;
-
-    // Call Service Layer (The Domain Logic)
-    const LinkedList<std::string>* route = service.GetBusRoute(inputID);
-
-    // Presentation Layer handles the output based on the returned data
-    cout << "\n------------------------------------------" << endl;
-
-    if (route != nullptr)
-    {
-        cout << "Route for " << inputID << ":\n";
-
-        // Use the STL-style iterator provided by SLList.h
-        bool first = true;
-        for (const auto& stopName : *route)
-        {
-            if (!first)
-            {
-                cout << " -> ";
-            }
-            cout << "[" << stopName << "]";
-            first = false;
-        }
-        cout << "\n------------------------------------------" << endl;
-    }
-    else
-    {
-        cout << "Error: Bus ID '" << inputID << "' not found in the system." << endl;
-        cout << "------------------------------------------" << endl;
-    }
-}
-
+// Forward declaration for the menu function
+void RunPopulationModule(PopulationService& service);
 
 int main()
 {
     // --- 1. INFRASTRUCTURE & DEPENDENCY INJECTION ---
 
-    // We create the concrete repository (Infrastructure)
-    // The path assumes the executable is run from the project root or the CSV is copied there.
-    IBusRepository* busRepo = new CsvBusRepository("data/buses.csv");
+    // We dynamically allocate the concrete repository (Infrastructure).
+    // The path is set to the correct population data file.
+    IPersonRepository* populationRepo = new CCsvPersonRepository("data/population.csv");
 
     // We inject the repository into the Service (Domain)
-    TransportService transportService(busRepo);
+    PopulationService populationService(populationRepo);
 
     // --- 2. INITIALIZATION (Load Data) ---
 
-    // Tell the service to load data from the repo into its internal cache (m_Buses)
+    // Tell the service to load data from the repo into its internal cache (HashTable)
     cout << "System Initialization: Loading data..." << endl;
-    transportService.Initialize();
-    cout << "Initialization complete." << endl;
+    populationService.Initialize();
+    cout << "Initialization complete. Hash Table ready." << endl;
 
     // --- 3. PRESENTATION ---
 
-    RunTransportModule(transportService);
+    RunPopulationModule(populationService);
 
     // --- 4. CLEANUP ---
 
-    delete busRepo;
+    delete populationRepo;
     return 0;
+}
+
+void RunPopulationModule(PopulationService& service)
+{
+    cout << "\n==========================================" << endl;
+    cout << "  POPULATION MODULE: UC-H6 Search Citizen" << endl;
+    cout << "==========================================" << endl;
+
+    // List sample CNICs for testing based on population.csv
+    cout << "Sample CNICs for testing:" << endl;
+    cout << "  - 61101-1111111-1 (Engineer)" << endl;
+    cout << "  - 61101-4444444-4 (Student)" << endl;
+
+    string inputCNIC;
+    cout << "\nEnter Citizen CNIC: ";
+    cin >> inputCNIC;
+
+    // Call Service Layer (The Domain Logic) - O(1) Average Lookup
+    const Person* citizen = service.GetCitizen(inputCNIC);
+
+    // Presentation Layer handles the output
+    cout << "\n------------------------------------------" << endl;
+
+    if (citizen != nullptr)
+    {
+        cout << "Citizen Found:" << endl;
+        cout << "  Name:       " << citizen->GetName() << endl;
+        cout << "  CNIC:       " << citizen->GetCNIC() << endl;
+        cout << "  Age:        " << citizen->GetAge() << endl;
+        cout << "  Occupation: " << citizen->GetOccupation() << endl;
+        cout << "  Address:    " << citizen->GetAddress() << endl;
+    }
+    else
+    {
+        cout << "Error: Citizen with CNIC '" << inputCNIC << "' not found." << endl;
+    }
+    cout << "------------------------------------------" << endl;
 }

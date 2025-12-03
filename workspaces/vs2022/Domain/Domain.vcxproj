@@ -16,11 +16,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\source\Domain\Population\CNICHash.h" />
+    <ClInclude Include="..\..\..\source\Domain\Population\IPersonRepository.h" />
+    <ClInclude Include="..\..\..\source\Domain\Population\Person.h" />
+    <ClInclude Include="..\..\..\source\Domain\Population\PopulationService.h" />
     <ClInclude Include="..\..\..\source\Domain\Transport\Bus.h" />
     <ClInclude Include="..\..\..\source\Domain\Transport\IBusRepository.h" />
     <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\Domain\Population\src\CNICHash.cpp" />
+    <ClCompile Include="..\..\..\source\Domain\Population\src\Person.cpp" />
+    <ClCompile Include="..\..\..\source\Domain\Population\src\PopulationService.cpp" />
+    <ClCompile Include="..\..\..\source\Domain\Transport\src\Bus.cpp" />
     <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

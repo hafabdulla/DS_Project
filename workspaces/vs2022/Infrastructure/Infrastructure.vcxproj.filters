@@ -12,5 +12,9 @@
     <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvBusRepository.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\Infrastructure\CCsvPersonRepository.h" />
+    <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvPersonRepository.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
