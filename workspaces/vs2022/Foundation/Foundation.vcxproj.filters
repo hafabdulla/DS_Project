@@ -6,8 +6,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\source\Foundation\LinkedList.h">
-      <Filter>src</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\..\source\Foundation\Deque.h" />
+    <ClInclude Include="..\..\..\source\Foundation\LinkedList.h" />
+    <ClInclude Include="..\..\..\source\Foundation\HashTable.h" />
+    <ClInclude Include="..\..\..\source\Foundation\HashPolicies.h" />
   </ItemGroup>
 </Project>
