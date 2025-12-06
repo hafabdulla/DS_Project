@@ -1,0 +1,95 @@
+# Visual Studio 2022 C++ .gitignore
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Visual Studio cache/options directory
+.vs/
+.vscode/
+
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+## Visual Studio Trace Files
+*.e2e
+
+## ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Database files
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+
+## Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+## Precompiled Headers
+*.gch
+*.pch
+
+## Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+## Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+## Executables
+*.exe
+*.out
+*.app
+
+## Visual Studio Code coverage results
+*.coverage
+*.coveragexml
+
+## IntelliSense database
+*.VC.db
+*.VC.VC.opendb
+
+## FileContentIndex (Visual Studio 2022)
+FileContentIndex/
+
+## DO NOT IGNORE
+!*.sln
+!*.vcxproj
+!*.vcxproj.filters
+!*.h
+!*.cpp
+!*.c
+!*.hpp
+!README.md

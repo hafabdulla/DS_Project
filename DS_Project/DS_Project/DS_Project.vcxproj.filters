@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DataStructures">
+      <UniqueIdentifier>{b178718a-7f1d-4452-b8d3-26331b6d4201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{769bd225-c23b-41ce-919b-5905c2b2aea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{ef473c52-bba1-48bb-8b4e-3b1adc506394}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinkedList.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>DataStructures</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\buses.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\hospitals.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\pharmacies.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\population.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\schools.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\stops.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
