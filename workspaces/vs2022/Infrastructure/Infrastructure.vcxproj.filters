@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClInclude Include="CCsvBusRepository.h" />
+    <ClInclude Include="CCsvPersonRepository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CCsvBusRepository.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="CCsvPersonRepository.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <Filter Include="src">
-      <UniqueIdentifier>{8152c99c-99cd-4e9c-99b2-0c20d7a55953}</UniqueIdentifier>
+      <UniqueIdentifier>{4414a2d7-5ef1-436e-9234-9e11c296c142}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\source\Infrastructure\CCsvBusRepository.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvBusRepository.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Infrastructure\CCsvPersonRepository.h" />
-    <ClCompile Include="..\..\..\source\Infrastructure\src\CCsvPersonRepository.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

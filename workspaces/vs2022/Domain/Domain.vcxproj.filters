@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClInclude Include="CNICHash.h">
+      <Filter>Housing</Filter>
+    </ClInclude>
+    <ClInclude Include="IPersonRepository.h">
+      <Filter>Housing</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Housing</Filter>
+    </ClInclude>
+    <ClInclude Include="Bus.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="IBusRepository.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="TransportService.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="PopulationService.h">
+      <Filter>Housing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CNICHash.cpp">
+      <Filter>Housing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Housing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PopulationService.cpp">
+      <Filter>Housing\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Bus.cpp">
+      <Filter>Transport\src</Filter>
+    </ClCompile>
+    <ClCompile Include="TransportService.cpp">
+      <Filter>Transport\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Housing">
+      <UniqueIdentifier>{7385134d-872b-46e3-a34a-26821c18a0da}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Transport">
-      <UniqueIdentifier>{a4d7658e-9916-4ee1-ba26-83d657aeb990}</UniqueIdentifier>
+      <UniqueIdentifier>{845c6e4c-245f-4a00-8ff3-ec0f5c90f1a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Housing\src">
+      <UniqueIdentifier>{15ec5e0f-54c7-431f-94d7-5ad6602aff04}</UniqueIdentifier>
     </Filter>
     <Filter Include="Transport\src">
-      <UniqueIdentifier>{274673b8-d0ca-4b9e-91ab-282c5c032064}</UniqueIdentifier>
+      <UniqueIdentifier>{15aaeaa3-6d10-4d9a-9d43-65e949210959}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Population">
-      <UniqueIdentifier>{9d12761f-7c6f-4e51-9010-2c72b616b64b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Population\src">
-      <UniqueIdentifier>{64d779bf-c1ae-4bbc-b9df-bdd4db7b59c8}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\source\Domain\Transport\Bus.h">
-      <Filter>Transport</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Transport\IBusRepository.h">
-      <Filter>Transport</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h">
-      <Filter>Transport</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Population\PopulationService.h">
-      <Filter>Population</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Population\IPersonRepository.h">
-      <Filter>Population</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Population\Person.h">
-      <Filter>Population</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\Domain\Population\CNICHash.h">
-      <Filter>Population</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp">
-      <Filter>Transport\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Domain\Population\src\PopulationService.cpp">
-      <Filter>Population\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Domain\Transport\src\Bus.cpp">
-      <Filter>Transport\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Domain\Population\src\Person.cpp">
-      <Filter>Population\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\Domain\Population\src\CNICHash.cpp">
-      <Filter>Population\src</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

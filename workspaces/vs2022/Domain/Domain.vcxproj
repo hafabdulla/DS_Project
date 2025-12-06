@@ -16,20 +16,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\source\Domain\Population\CNICHash.h" />
-    <ClInclude Include="..\..\..\source\Domain\Population\IPersonRepository.h" />
-    <ClInclude Include="..\..\..\source\Domain\Population\Person.h" />
-    <ClInclude Include="..\..\..\source\Domain\Population\PopulationService.h" />
-    <ClInclude Include="..\..\..\source\Domain\Transport\Bus.h" />
-    <ClInclude Include="..\..\..\source\Domain\Transport\IBusRepository.h" />
-    <ClInclude Include="..\..\..\source\Domain\Transport\TransportService.h" />
+    <ClInclude Include="Bus.h" />
+    <ClInclude Include="CNICHash.h" />
+    <ClInclude Include="IBusRepository.h" />
+    <ClInclude Include="IPersonRepository.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PopulationService.h" />
+    <ClInclude Include="TransportService.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\Domain\Population\src\CNICHash.cpp" />
-    <ClCompile Include="..\..\..\source\Domain\Population\src\Person.cpp" />
-    <ClCompile Include="..\..\..\source\Domain\Population\src\PopulationService.cpp" />
-    <ClCompile Include="..\..\..\source\Domain\Transport\src\Bus.cpp" />
-    <ClCompile Include="..\..\..\source\Domain\Transport\src\TransportService.cpp" />
+    <ClCompile Include="Bus.cpp" />
+    <ClCompile Include="CNICHash.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PopulationService.cpp" />
+    <ClCompile Include="TransportService.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -73,6 +73,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
