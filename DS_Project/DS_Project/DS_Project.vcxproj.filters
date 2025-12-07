@@ -45,6 +45,12 @@
     <ClInclude Include="PriorityQueue.h">
       <Filter>DataStructures</Filter>
     </ClInclude>
+    <ClInclude Include="Transport.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Population.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
