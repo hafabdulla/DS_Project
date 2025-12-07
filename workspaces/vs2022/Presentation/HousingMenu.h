@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void clearInputBuffer();
+void clearInputBufferac();
 
 void managePopulation(HousingService& service)
 {
@@ -22,6 +22,7 @@ void managePopulation(HousingService& service)
         cout << "7. View Population Hierarchy\n";
         cout << "8. View Age Distribution Report\n";
         cout << "9. View Occupation Summary\n";
+        cout << "10. Find Residents of Sector\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -35,7 +36,10 @@ void managePopulation(HousingService& service)
             continue;
         }
 
-        if (choice == 1)
+        switch(choice)
+        {
+
+        case 1:
         {
             string cnic;
             cout << "Enter CNIC (without dashes): ";
@@ -55,8 +59,11 @@ void managePopulation(HousingService& service)
             {
                 cout << "[Result] Citizen not found in database.\n";
             }
+
+            break;
         }
-        else if (choice == 2)
+
+        case 2:
         {
             string sectorName;
             cout << "Enter New Sector Name: ";
@@ -70,8 +77,11 @@ void managePopulation(HousingService& service)
             {
                 cout << "[Error] Failed to register sector (might already exist).\n";
             }
+            
+            break;
         }
-        else if (choice == 3)
+
+        case 3:
         {
             string streetName;
             string sectorName;
@@ -91,8 +101,10 @@ void managePopulation(HousingService& service)
                 cout << "[Error] Failed to register street (either sector does not exist or house already exists).\n";
             }
 
+            break;
         }
-        else if (choice == 4)
+
+        case 4:
         {
             string houseNo;
             string streetName;
@@ -115,8 +127,11 @@ void managePopulation(HousingService& service)
             {
                 cout << "[Error] Failed to register house (either sector/street does not exist or house already exists).\n";
             }
+
+            break;
         }
-        else if (choice == 5)
+
+        case 5:
         {
             string sector, street, house, family;
             cout << "Enter Sector: "; cin >> sector;
@@ -130,8 +145,11 @@ void managePopulation(HousingService& service)
                 cout << "[Success] Family '" << family << "' registered.\n";
             else
                 cout << "[Error] Failed. House might not exist or family already registered.\n";
+
+            break;
         }
-        else if (choice == 6)
+
+        case 6:
         {
             string sector, street, house, family;
             string cnic, name, occupation;
@@ -173,8 +191,11 @@ void managePopulation(HousingService& service)
                 cout << "[Success] Citizen registered successfully.\n";
             else
                 cout << "[Error] Failed. Family not found or CNIC already exists.\n";
+            
+            break;
         }
-        else if (choice == 7)
+
+        case 7:
         {
             cout << "\n--- Islamabad City Hierarchy ---\n";
 
@@ -199,8 +220,11 @@ void managePopulation(HousingService& service)
                 };
 
             service.TraverseHousingHierarchy(printNode);
+
+            break;
         }
-        else if (choice == 8)
+
+        case 8:
         {
             int child, young, adult, senior;
             service.GetAgeDistribution(child, young, adult, senior);
@@ -213,8 +237,11 @@ void managePopulation(HousingService& service)
             cout << "Youth (19-35):   " << young << " (" << (young * 100 / total) << "%)\n";
             cout << "Adults (36-60):  " << adult << " (" << (adult * 100 / total) << "%)\n";
             cout << "Seniors (60+):   " << senior << " (" << (senior * 100 / total) << "%)\n";
+
+            break;
         }
-        else if (choice == 9)
+
+        case 9:
         {
             cout << "\n--- Occupation Summary ---\n";
 
@@ -224,6 +251,42 @@ void managePopulation(HousingService& service)
                 };
 
             service.TraverseOccupationSummary(printJob);
+
+            break;
+        }
+
+        case 10:
+        {
+            string sector;
+            cout << "Enter Sector Name (e.g., G-10): ";
+            cin >> sector;
+
+            LinkedList<const Person*> residents;
+            service.GetResidentsInSector(sector, residents);
+
+            if (residents.empty())
+            {
+                cout << "[Result] No residents found in " << sector << " (or sector does not exist).\n";
+            }
+            else
+            {
+                cout << "\n--- Residents of " << sector << " ---\n";
+                int count = 0;
+                for (const Person* p : residents)
+                {
+                    cout << ++count << ". " << p->GetName()
+                        << " (" << p->GetOccupation() << ") - "
+                        << p->GetAddress() << endl;
+                }
+                cout << "-----------------------------\n";
+                cout << "Total: " << count << " residents.\n";
+            }
+
+            break;
+        }
+
+        default:
+            break;
         }
     }
 }

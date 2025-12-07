@@ -59,6 +59,9 @@ public:
     template<typename Func>
     void PreOrderTraversal(Func visit) const;
 
+    template<typename Func>
+    void TraverseSubtree(const K& subRootKey, Func visit) const;
+
     bool IsEmpty() const noexcept;
     std::size_t Size() const noexcept;
     void Clear();
@@ -246,6 +249,18 @@ template<typename Func>
 inline void Tree<K, V>::PreOrderTraversal(Func visit) const
 {
     preOrderTraversalImpl(m_Root, visit);
+}
+
+template<typename K, typename V>
+template<typename Func>
+inline void Tree<K, V>::TraverseSubtree(const K& subRootKey, Func visit) const
+{
+    Node* subRoot = const_cast<Tree*>(this)->findNode(m_Root, subRootKey);
+
+    if (subRoot)
+    {
+        preOrderTraversalImpl(subRoot, visit);
+    }
 }
 
 template<typename K, typename V>

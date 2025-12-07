@@ -34,6 +34,7 @@ public:
 
     const Person* GetCitizen(const std::string& cnic);
     void GetAgeDistribution(int& outChildren, int& outYoung, int& outAdults, int& outSeniors);
+    void GetResidentsInSector(const std::string& sectorName, LinkedList<const Person*>& outResidents);
 
     bool RegisterSector(const std::string& sectorName);
     bool RegisterStreet(const std::string& sectorName, const std::string& streetName);

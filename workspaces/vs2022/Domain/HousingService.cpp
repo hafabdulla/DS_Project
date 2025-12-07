@@ -43,6 +43,25 @@ void HousingService::GetAgeDistribution(int& outChildren, int& outYoung, int& ou
     }
 }
 
+void HousingService::GetResidentsInSector(const std::string& sectorName, LinkedList<const Person*>& outResidents)
+{
+    outResidents.clear();
+
+    auto visitor = [&](const std::string& key, const std::string& val)
+        {
+            size_t lastColon = key.find_last_of(':');
+            std::string potentialCNIC = (lastColon != std::string::npos) ? key.substr(lastColon + 1) : key;
+
+            if (m_Persons.contains(potentialCNIC))
+            {
+                //outResidents.push_back(m_Persons.Get(potentialCNIC));
+                outResidents.push_back(&m_Persons.at(potentialCNIC));
+            }   
+        };
+
+    m_HousingData.TraverseSubtree(sectorName, visitor);
+}
+
 bool HousingService::RegisterSector(const std::string& sectorName)
 {
     std::string rootKey = "Islamabad";

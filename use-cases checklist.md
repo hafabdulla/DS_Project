@@ -70,7 +70,7 @@
 - [x] UC-H8: Generate Occupation Summary
 - [ ] UC-H9: Calculate Population Density by Sector
 - [ ] UC-H10: Generate Gender Ratio Report
-- [ ] UC-H11: Find All Residents of a Sector
+- [x] UC-H11: Find All Residents of a Sector
 - [x] UC-H12: Display Sector Hierarchy (Tree Traversal)
 
 ## 7. Cross-Module Use Cases (6 use cases)
@@ -107,9 +107,9 @@
 - **Medical:** 0/12
 - **Commercial:** 0/6
 - **Public Facilities:** 0/
-- **Population & Housing:** 9/12
+- **Population & Housing:** 10/12
 - **Cross-Module:** 0/6
 - **Bonus:** 0/5
 - **Admin:** 0/5
 
-**Total:** 17/71 use cases completed
+**Total:** 20/71 use cases completed
