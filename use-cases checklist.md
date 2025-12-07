@@ -4,7 +4,7 @@
 
 - [x] UC-T1: Register Transport Company
 - [x] UC-T2: Register Bus with Route
-- [ ] UC-T3: Add Bus Stop
+- [x] UC-T3: Add Bus Stop
 - [ ] UC-T4: Connect Bus Stops
 - [ ] UC-T5: Update Bus Location
 - [ ] UC-T6: Find Shortest Path Between Stops (Dijkstra)
@@ -102,7 +102,7 @@
 
 ## Summary Progress
 
-- **Transport:** 4/10
+- **Transport:** 5/10
 - **Education:** 0/11
 - **Medical:** 0/12
 - **Commercial:** 0/6
@@ -112,4 +112,4 @@
 - **Bonus:** 0/5
 - **Admin:** 0/5
 
-**Total:** 9/71 use cases completed
+**Total:** 10/71 use cases completed

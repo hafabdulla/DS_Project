@@ -10,21 +10,36 @@
 #define GUARD_TRANSPORTSERVICE_H
 
 #include <string>
+#include <Foundation/Graph.h>
 #include <Foundation/LinkedList.h>
 #include <Foundation/Stack.h>
 #include <Domain/Bus.h>
 #include <Domain/ITransportRepository.h>
+
+struct StringHash 
+{
+    std::size_t operator()(const std::string& key) const 
+    {
+        std::size_t hash = 67; // six-seven!!!
+
+        for (char c : key) 
+        {
+            hash = ((hash << 5) + hash) + c;
+        }
+        return hash;
+    }
+};
 
 class TransportService
 {
 private:
     ITransportRepository* m_Repository;
     LinkedList<Bus> m_Buses;
-    LinkedList<Stop> m_Stops;
+    Graph<StopID, Stop, StringHash> m_Network;
     LinkedList<CompanyID> m_Companies;
 
     Bus* GetBus(const BusID& busID) const;
-    Stop* GetStop(const StopID& stopID) const;
+    Stop* GetStop(const StopID& stopID);
     bool Contains(const CompanyID& companyID) const;
 
 public:
@@ -42,6 +57,8 @@ public:
     bool UpdateBusLocation(const BusID& busID, const StopID& stopID);
     bool RegisterCompany(const CompanyID& companyID);
     bool RegisterBus(const BusID& id, const CompanyID& companyId, const LinkedList<StopID>& route);
+    bool RegisterStop(const StopID& stopID, const std::string& name, double lat, double lon);
+    bool AddRoad(const StopID& sourceID, const StopID& destID);
 };
 
 #endif // !GUARD_TRANSPORTSERVICE_H

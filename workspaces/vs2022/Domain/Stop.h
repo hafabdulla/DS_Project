@@ -17,27 +17,27 @@ typedef std::string StopID;
 class Stop
 {
 private:
-    const StopID m_ID;
-    const std::string m_Name;
-    const Coordinate m_Coordinate;
+    StopID m_ID;
+    std::string m_Name;
+    Coordinate m_Coordinate;
 
 public:
-    Stop(std::string stopID, std::string name, Coordinate coordinates)
+    Stop(const StopID& stopID, const std::string& name, const Coordinate& coordinates)
         : m_ID(stopID), m_Name(name), m_Coordinate(coordinates)
     {
     }
 
-    const std::string getID()
+    const std::string getID() const
     {
         return m_ID;
     }
 
-    const std::string getName()
+    const std::string getName() const
     {
         return m_Name;
     }
 
-    const Coordinate getCoordinate()
+    const Coordinate getCoordinate() const
     {
         return m_Coordinate;
     }

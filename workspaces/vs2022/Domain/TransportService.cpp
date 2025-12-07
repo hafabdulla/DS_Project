@@ -23,16 +23,12 @@ Bus* TransportService::GetBus(const BusID& busID) const
     return nullptr;
 }
 
-Stop* TransportService::GetStop(const StopID& stopID) const
+Stop* TransportService::GetStop(const StopID& stopID)
 {
-    for (Stop& stop : m_Stops)
+    if (m_Network.HasVertex(stopID))
     {
-        if (stop.getID() == stopID)
-        {
-            return &stop;
-        }
+        return m_Network.GetVertex(stopID);
     }
-
     return nullptr;
 }
 
@@ -53,8 +49,43 @@ TransportService::TransportService()
     m_Repository = new CTransportRepository();
 
     m_Buses = m_Repository->LoadBusData("data/buses.csv");
-    m_Stops = m_Repository->LoadStopData("data/stops.csv");
+    LinkedList<Stop> stops = m_Repository->LoadStopData("data/stops.csv");
     m_Companies = m_Repository->LoadCompanyData("data/buses.csv");
+
+    for (const auto& stop : stops)
+    {
+        m_Network.AddVertex(stop.getID(), stop);
+    }
+
+    for (const auto& bus : m_Buses)
+    {
+        const LinkedList<StopID>& route = bus.GetRoute();
+
+        if (route.empty()) 
+            continue;
+
+        auto it = route.begin();
+        auto nextIt = route.begin();
+        ++nextIt;
+
+        while (nextIt != route.end())
+        {
+            StopID src = *it;
+            StopID dest = *nextIt;
+
+            if (m_Network.HasVertex(src) && m_Network.HasVertex(dest))
+            {
+                Stop* s1 = m_Network.GetVertex(src);
+                Stop* s2 = m_Network.GetVertex(dest);
+                double dist = s1->getCoordinate().DistanceTo(s2->getCoordinate());
+
+                m_Network.AddEdge(src, dest, dist);
+            }
+
+            ++it;
+            ++nextIt;
+        }
+    }
 }
 
 const LinkedList<std::string>* TransportService::GetBusRoute(const BusID& busID)
@@ -86,13 +117,11 @@ bool TransportService::UpdateBusLocation(const BusID& busID, const StopID& stopI
 {
     Bus* bus = GetBus(busID);
 
-    if (bus == nullptr)
-        throw std::invalid_argument("Bus: " + busID + " does not exist");
+    if (bus == nullptr) 
+        throw std::invalid_argument("Bus not found");
 
-    Stop* stop = GetStop(stopID);
-
-    if (stop == nullptr)
-        throw std::runtime_error("Stop: " + stopID + " does not exist");
+    if (!m_Network.HasVertex(stopID))
+        throw std::runtime_error("Stop not found");
 
     bus->MoveTo(stopID);
     return true;
@@ -140,4 +169,33 @@ bool TransportService::RegisterBus(const BusID& id, const CompanyID& companyId, 
     m_Buses.push_back(std::move(newBus));
 
     return true;
+}
+
+bool TransportService::RegisterStop(const StopID& stopID, const std::string& name, double lat, double lon)
+{
+    if (m_Network.HasVertex(stopID))
+    {
+        return false;
+    }
+
+    Coordinate coord(lat, lon);
+    Stop newStop(stopID, name, coord);
+
+    m_Network.AddVertex(stopID, newStop);
+    return true;
+}
+
+bool TransportService::AddRoad(const StopID& sourceID, const StopID& destID)
+{
+    if (m_Network.HasVertex(sourceID) && m_Network.HasVertex(destID))
+    {
+        Stop* s1 = m_Network.GetVertex(sourceID);
+        Stop* s2 = m_Network.GetVertex(destID);
+        double dist = s1->getCoordinate().DistanceTo(s2->getCoordinate());
+
+        m_Network.AddEdge(sourceID, destID, dist);
+        return true;
+    }
+
+    return false;
 }

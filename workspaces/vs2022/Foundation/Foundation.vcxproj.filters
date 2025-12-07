@@ -6,5 +6,6 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Tree.h" />
+    <ClInclude Include="Graph.h" />
   </ItemGroup>
 </Project>

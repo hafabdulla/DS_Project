@@ -32,6 +32,7 @@ void manageTransport(TransportService& service)
         cout << "4. View Registered Companies\n";
         cout << "5. Register Transport Company\n";
         cout << "6. Register New Bus\n";
+        cout << "7. Add New Stop\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -161,6 +162,34 @@ void manageTransport(TransportService& service)
             else 
             {
                 cout << "[Error] Failed. Bus ID might exist, route is empty, or a Stop ID is invalid.\n";
+            }
+        }
+        else if (choice == 7)
+        {
+            string id, name;
+            double lat, lon;
+
+            cout << "Enter Stop ID (e.g., Stop15): ";
+            cin >> id;
+
+            cout << "Enter Stop Name (e.g., Central Park): ";
+
+            clearInputBuffer();
+            getline(cin, name);
+
+            cout << "Enter Latitude (e.g., 33.684): ";
+            cin >> lat;
+
+            cout << "Enter Longitude (e.g., 73.025): ";
+            cin >> lon;
+
+            if (service.RegisterStop(id, name, lat, lon))
+            {
+                cout << "[Success] Stop '" << name << "' registered successfully.\n";
+            }
+            else
+            {
+                cout << "[Error] Stop ID already exists.\n";
             }
         }
     }
