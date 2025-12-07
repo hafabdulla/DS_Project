@@ -32,9 +32,23 @@ public:
     ~PopulationService() = default;
 
     const Person* GetCitizen(const std::string& cnic);
+
     bool RegisterSector(const std::string& sectorName);
     bool RegisterStreet(const std::string& sectorName, const std::string& streetName);
     bool RegisterHouse(const std::string& sectorName, const std::string& streetName, const std::string& houseNo);
+    bool RegisterFamily(const std::string& sectorName, const std::string& streetName, const std::string& houseNo,
+        const std::string& familyName);
+    bool RegisterIndividual(const std::string& sectorName, const std::string& streetName, const std::string& houseNo,
+        const std::string& familyName, const Person& person);
+
+    template<typename Func>
+    void TraverseHousingHierarchy(Func visit) const;
 };
 
 #endif // !GUARD_POPULATIONSERVICE_H
+
+template<typename Func>
+inline void PopulationService::TraverseHousingHierarchy(Func visit) const
+{
+    m_HousingData.PreOrderTraversal(visit);
+}

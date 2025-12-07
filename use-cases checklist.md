@@ -63,15 +63,15 @@
 - [x] UC-H1: Add Sector (N-ary Tree)
 - [x] UC-H2: Add Street to Sector (N-ary Tree)
 - [x] UC-H3: Add House to Street (N-ary Tree)
-- [ ] UC-H4: Register Family
-- [ ] UC-H5: Register Individual
+- [x] UC-H4: Register Family
+- [x] UC-H5: Register Individual
 - [x] UC-H6: Search Citizen by CNIC (Hash Table)
 - [ ] UC-H7: Generate Age Distribution Report
 - [ ] UC-H8: Generate Occupation Summary
 - [ ] UC-H9: Calculate Population Density by Sector
 - [ ] UC-H10: Generate Gender Ratio Report
 - [ ] UC-H11: Find All Residents of a Sector
-- [ ] UC-H12: Display Sector Hierarchy (Tree Traversal)
+- [x] UC-H12: Display Sector Hierarchy (Tree Traversal)
 
 ## 7. Cross-Module Use Cases (6 use cases)
 
@@ -102,14 +102,14 @@
 
 ## Summary Progress
 
-- **Transport:** 9/10
+- **Transport:** 10/10
 - **Education:** 0/11
 - **Medical:** 0/12
 - **Commercial:** 0/6
 - **Public Facilities:** 0/
-- **Population & Housing:** 4/12
+- **Population & Housing:** 7/12
 - **Cross-Module:** 0/6
 - **Bonus:** 0/5
 - **Admin:** 0/5
 
-**Total:** 13/71 use cases completed
+**Total:** 17/71 use cases completed

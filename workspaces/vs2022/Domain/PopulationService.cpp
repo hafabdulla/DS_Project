@@ -68,3 +68,45 @@ bool PopulationService::RegisterHouse(const std::string& sectorName, const std::
     else
         return false;
 }
+
+bool PopulationService::RegisterFamily(const std::string& sectorName, const std::string& streetName, const std::string& houseNo,
+    const std::string& familyName)
+{
+    std::string houseKey = sectorName + ":" + streetName + ":" + houseNo;
+
+    std::string familyKey = houseKey + ":" + familyName;
+
+    if (!m_HousingData.Contains(houseKey))
+    {
+        return false;
+    }
+
+    if (m_HousingData.Contains(familyKey))
+    {
+        return false;
+    }
+
+    m_HousingData.AddChild(houseKey, familyKey, familyName);
+    return true;
+}
+
+bool PopulationService::RegisterIndividual(const std::string& sectorName, const std::string& streetName, const std::string& houseNo, const std::string& familyName, const Person& person)
+{
+    std::string familyKey = sectorName + ":" + streetName + ":" + houseNo + ":" + familyName;
+
+    if (!m_HousingData.Contains(familyKey))
+    {
+        return false;
+    }
+
+    if (m_Persons.contains(person.GetCNIC()))
+    {
+        return false;
+    }
+
+    std::string individualTreeKey = familyKey + ":" + person.GetCNIC();
+    m_HousingData.AddChild(familyKey, individualTreeKey, person.GetName());
+    m_Persons.insert(person.GetCNIC(), person);
+
+    return true;
+}

@@ -266,6 +266,9 @@ void managePopulation(PopulationService& service)
         cout << "2. Register New Sector\n";
         cout << "3. Register New Street\n";
         cout << "4. Register New House\n";
+        cout << "5. Register New Family\n";
+        cout << "6. Register New Individual\n";
+        cout << "7. View Population Hierarchy\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -359,6 +362,90 @@ void managePopulation(PopulationService& service)
             {
                 cout << "[Error] Failed to register house (either sector/street does not exist or house already exists).\n";
             }
+        }
+        else if (choice == 5)
+        {
+            string sector, street, house, family;
+            cout << "Enter Sector: "; cin >> sector;
+            cout << "Enter Street: "; cin >> street;
+            cout << "Enter House No: "; cin >> house;
+
+            cout << "Enter Family Name (e.g., KhanFamily): ";
+            cin >> family;
+
+            if (service.RegisterFamily(sector, street, house, family))
+                cout << "[Success] Family '" << family << "' registered.\n";
+            else
+                cout << "[Error] Failed. House might not exist or family already registered.\n";
+        }
+        else if (choice == 6)
+        {
+            string sector, street, house, family;
+            string cnic, name, occupation;
+            int age;
+
+            cout << "--- Location Info ---\n";
+            cout << "Enter Sector: "; 
+            cin >> sector;
+
+            cout << "Enter Street: "; 
+            cin >> street;
+
+            cout << "Enter House No: "; 
+            cin >> house;
+
+            cout << "Enter Family Name: "; 
+            cin >> family;
+
+            cout << "--- Personal Info ---\n";
+            cout << "Enter CNIC (unique): "; 
+            cin >> cnic;
+
+            cout << "Enter Name: ";
+
+            clearInputBuffer();
+            getline(cin, name);
+
+            cout << "Enter Age: ";
+            cin >> age;
+
+            cout << "Enter Occupation: ";
+            cin >> occupation;
+
+            string address = "House " + house + ", Street " + street + ", " + sector;
+
+            Person newPerson(cnic, name, age, address, occupation);
+
+            if (service.RegisterIndividual(sector, street, house, family, newPerson))
+                cout << "[Success] Citizen registered successfully.\n";
+            else
+                cout << "[Error] Failed. Family not found or CNIC already exists.\n";
+        }
+        else if (choice == 7)
+        {
+            cout << "\n--- Islamabad City Hierarchy ---\n";
+
+            auto printNode = [](const string& key, const string& val)
+                {
+                    size_t depth = 0;
+                    for (char c : key)
+                    {
+                        if (c == ':')
+                            depth++;
+                    }
+
+                    string indent(depth * 3, ' ');
+                    string displayName = val;
+                    size_t lastColon = val.find_last_of(':');
+                    if (lastColon != string::npos)
+                    {
+                        displayName = val.substr(lastColon + 1);
+                    }
+
+                    cout << indent << "|__ " << displayName << endl;
+                };
+
+            service.TraverseHousingHierarchy(printNode);
         }
     }
 }
