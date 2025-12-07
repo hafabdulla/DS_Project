@@ -18,15 +18,19 @@
   <ItemGroup>
     <ClInclude Include="Bus.h" />
     <ClInclude Include="CNICHash.h" />
-    <ClInclude Include="IBusRepository.h" />
+    <ClInclude Include="Company.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="IPersonRepository.h" />
+    <ClInclude Include="ITransportRepository.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PopulationService.h" />
+    <ClInclude Include="Stop.h" />
     <ClInclude Include="TransportService.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bus.cpp" />
     <ClCompile Include="CNICHash.cpp" />
+    <ClCompile Include="Company.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PopulationService.cpp" />
     <ClCompile Include="TransportService.cpp" />

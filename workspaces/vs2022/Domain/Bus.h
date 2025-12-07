@@ -12,30 +12,34 @@
 #include <string>
 #include <Foundation/LinkedList.h>
 #include <Foundation/Stack.h>
+#include <Domain/Stop.h>
+#include <Domain/Company.h>
+
+typedef std::string BusID;
 
 class Bus
 {
 private:
-    std::string m_BusID;
-    std::string m_Company;
-    std::string m_CurrentLocation;
-    LinkedList<std::string> m_Route;
-    Stack<std::string> m_TravelHistory;
+    BusID m_BusID;
+    CompanyID m_CompanyID;
+    StopID m_CurrentStopID;
+    LinkedList<StopID> m_Route;
+    Stack<StopID> m_TravelHistory;
 
 public:
     Bus() = default;
-    Bus(const std::string& id, const std::string& company, const std::string& currentLocation);
+    Bus(const BusID& id, const CompanyID& companyID, const StopID& currentStopID);
 
-    const std::string& GetBusID() const noexcept;
-    const std::string& GetCompany() const noexcept;
-    const std::string& GetCurrentLocation() const noexcept;
-    const LinkedList<std::string>& GetRoute() const noexcept;
-    const Stack<std::string>& GetTravelHistory() const noexcept;
+    const BusID& GetID() const noexcept;
+    const CompanyID& GetCompanyID() const noexcept;
+    const StopID& GetCurrentStopID() const noexcept;
+    const LinkedList<StopID>& GetRoute() const noexcept;
+    const Stack<StopID>& GetTravelHistory() const noexcept;
 
-    void SetRoute(LinkedList<std::string>&& route);
-    void AddStop(const std::string& stopName);
-    void SetCurrentLocation(const std::string& location);
-    void MoveTo(const std::string& stopName);
+    void SetRoute(LinkedList<StopID>&& route);
+    void AddStop(const StopID& stopID);
+    void SetCurrentLocation(const StopID& stopID);
+    void MoveTo(const StopID& stopID);
 };
 
 #endif // !GUARD_BUS_H

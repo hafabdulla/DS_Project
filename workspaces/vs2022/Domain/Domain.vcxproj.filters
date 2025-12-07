@@ -13,31 +13,37 @@
     <ClInclude Include="Bus.h">
       <Filter>Transport</Filter>
     </ClInclude>
-    <ClInclude Include="IBusRepository.h">
-      <Filter>Transport</Filter>
-    </ClInclude>
     <ClInclude Include="TransportService.h">
       <Filter>Transport</Filter>
     </ClInclude>
     <ClInclude Include="PopulationService.h">
       <Filter>Housing</Filter>
     </ClInclude>
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="Stop.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="ITransportRepository.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="Company.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CNICHash.cpp">
-      <Filter>Housing\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>Housing\src</Filter>
-    </ClCompile>
-    <ClCompile Include="PopulationService.cpp">
-      <Filter>Housing\src</Filter>
+    <ClCompile Include="Company.cpp" />
+    <ClCompile Include="TransportService.cpp">
+      <Filter>Transport</Filter>
     </ClCompile>
     <ClCompile Include="Bus.cpp">
-      <Filter>Transport\src</Filter>
+      <Filter>Transport</Filter>
     </ClCompile>
-    <ClCompile Include="TransportService.cpp">
-      <Filter>Transport\src</Filter>
+    <ClCompile Include="CNICHash.cpp">
+      <Filter>Housing</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Housing</Filter>
+    </ClCompile>
+    <ClCompile Include="PopulationService.cpp">
+      <Filter>Housing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,12 +52,6 @@
     </Filter>
     <Filter Include="Transport">
       <UniqueIdentifier>{845c6e4c-245f-4a00-8ff3-ec0f5c90f1a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Housing\src">
-      <UniqueIdentifier>{15ec5e0f-54c7-431f-94d7-5ad6602aff04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transport\src">
-      <UniqueIdentifier>{15aaeaa3-6d10-4d9a-9d43-65e949210959}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

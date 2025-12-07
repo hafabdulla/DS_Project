@@ -15,7 +15,7 @@ HashTable<CNIC, Person, CNICHash> CCsvPersonRepository::LoadAll()
     std::ifstream file(m_FilePath);
     if (!file.is_open())
     {
-        std::cerr << "[Error] Failed to open file: " << m_FilePath << std::endl;
+        std::cerr << "Failed to open file: " << m_FilePath << std::endl;
         return persons;
     }
 

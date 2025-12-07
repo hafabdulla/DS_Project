@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCsvBusRepository.h" />
     <ClInclude Include="CCsvPersonRepository.h" />
+    <ClInclude Include="CTransportRepository.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCsvBusRepository.cpp" />
     <ClCompile Include="CCsvPersonRepository.cpp" />
+    <ClCompile Include="CTransportRepository.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

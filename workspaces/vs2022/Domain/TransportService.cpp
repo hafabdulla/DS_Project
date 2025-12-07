@@ -8,13 +8,13 @@
 
 #include <stdexcept>
 #include <Domain/TransportService.h>
-#include <Infrastructure/CCsvBusRepository.h>
+#include <Infrastructure/CTransportRepository.h>
 
-Bus* TransportService::GetBus(std::string busID) const
+Bus* TransportService::GetBus(const BusID& busID) const
 {
     for (Bus& bus : m_Buses)
     {
-        if (bus.GetBusID() == busID)
+        if (bus.GetID() == busID)
         {
             return &bus;
         }
@@ -23,21 +23,28 @@ Bus* TransportService::GetBus(std::string busID) const
     return nullptr;
 }
 
-TransportService::TransportService()
+Stop* TransportService::GetStop(const StopID& stopID) const
 {
-    m_Repository = new CCsvBusRepository("data/buses.csv");
+    for (Stop& stop : m_Stops)
+    {
+        if (stop.getID() == stopID)
+        {
+            return &stop;
+        }
+    }
 
-    if (m_Repository)
-    {
-        m_Buses = m_Repository->LoadAll();
-    }
-    else
-    {
-        throw std::runtime_error("Failed to load Bus Repository");
-    }
+    return nullptr;
 }
 
-const LinkedList<std::string>* TransportService::GetBusRoute(const std::string& busID)
+TransportService::TransportService()
+{
+    m_Repository = new CTransportRepository();
+
+    m_Buses = m_Repository->LoadBusData("data/buses.csv");
+    m_Stops = m_Repository->LoadStopData("data/stops.csv");
+}
+
+const LinkedList<std::string>* TransportService::GetBusRoute(const BusID& busID)
 {
     Bus* bus = GetBus(busID);
 
@@ -47,7 +54,7 @@ const LinkedList<std::string>* TransportService::GetBusRoute(const std::string& 
     return &bus->GetRoute();
 }
 
-const Stack<std::string>* TransportService::GetBusRouteHistory(const std::string& busID)
+const Stack<std::string>* TransportService::GetBusRouteHistory(const BusID& busID)
 {
     Bus* bus = GetBus(busID);
 
@@ -57,13 +64,18 @@ const Stack<std::string>* TransportService::GetBusRouteHistory(const std::string
     return &bus->GetTravelHistory();
 }
 
-bool TransportService::UpdateBusLocation(const std::string& busID, const std::string& newStop)
+bool TransportService::UpdateBusLocation(const BusID& busID, const StopID& stopID)
 {
     Bus* bus = GetBus(busID);
 
     if (bus == nullptr)
-        return false;
+        throw std::invalid_argument("Bus: " + busID + " does not exist");
 
-    bus->MoveTo(newStop);
+    Stop* stop = GetStop(stopID);
+
+    if (stop == nullptr)
+        throw std::runtime_error("Stop: " + stopID + " does not exist");
+
+    bus->MoveTo(stopID);
     return true;
 }

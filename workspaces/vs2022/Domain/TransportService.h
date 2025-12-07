@@ -13,15 +13,17 @@
 #include <Foundation/LinkedList.h>
 #include <Foundation/Stack.h>
 #include <Domain/Bus.h>
-#include <Domain/IBusRepository.h>
+#include <Domain/ITransportRepository.h>
 
 class TransportService
 {
 private:
-    IBusRepository* m_Repository;
+    ITransportRepository* m_Repository;
     LinkedList<Bus> m_Buses;
+    LinkedList<Stop> m_Stops;
 
-    Bus* GetBus(std::string busID) const;
+    Bus* GetBus(const BusID& busID) const;
+    Stop* GetStop(const StopID& stopID) const;
 
 public:
     explicit TransportService();
@@ -31,10 +33,10 @@ public:
 
     ~TransportService() = default;
 
-    const LinkedList<std::string>* GetBusRoute(const std::string& busID);
-    const Stack<std::string>* GetBusRouteHistory(const std::string& busID);
+    const LinkedList<std::string>* GetBusRoute(const BusID& busID);
+    const Stack<std::string>* GetBusRouteHistory(const BusID& busID);
 
-    bool UpdateBusLocation(const std::string& busID, const std::string& newStop);
+    bool UpdateBusLocation(const BusID& busID, const StopID& stopID);
 };
 
 #endif // !GUARD_TRANSPORTSERVICE_H

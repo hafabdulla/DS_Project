@@ -1,24 +1,24 @@
 #include <Domain/Bus.h>
 
-Bus::Bus(const std::string& id, const std::string& company, const std::string& currentLocation)
-    : m_BusID(id), m_Company(company), m_CurrentLocation(currentLocation)
+Bus::Bus(const BusID& id, const CompanyID& companyID, const StopID& currentStopID)
+    : m_BusID(id), m_CompanyID(companyID), m_CurrentStopID(currentStopID)
 {
-    m_TravelHistory.push(currentLocation);
+    m_TravelHistory.push(currentStopID);
 }
 
-const std::string& Bus::GetBusID() const noexcept
+const std::string& Bus::GetID() const noexcept
 {
     return m_BusID;
 }
 
-const std::string& Bus::GetCompany() const noexcept
+const std::string& Bus::GetCompanyID() const noexcept
 {
-    return m_Company;
+    return m_CompanyID;
 }
 
-const std::string& Bus::GetCurrentLocation() const noexcept
+const std::string& Bus::GetCurrentStopID() const noexcept
 {
-    return m_CurrentLocation;
+    return m_CurrentStopID;
 }
 
 const Stack<std::string>& Bus::GetTravelHistory() const noexcept
@@ -36,18 +36,18 @@ void Bus::SetRoute(LinkedList<std::string>&& route)
     m_Route = std::move(route);
 }
 
-void Bus::AddStop(const std::string& stopName)
+void Bus::AddStop(const StopID& stopID)
 {
-    m_Route.push_back(stopName);
+    m_Route.push_back(stopID);
 }
 
-void Bus::SetCurrentLocation(const std::string& location)
+void Bus::SetCurrentLocation(const StopID& stopID)
 {
-    m_CurrentLocation = location;
+    m_CurrentStopID = stopID;
 }
 
-void Bus::MoveTo(const std::string& stopName)
+void Bus::MoveTo(const StopID& stopID)
 {
-    m_TravelHistory.push(stopName);
-    m_CurrentLocation = stopName;
+    m_TravelHistory.push(stopID);
+    m_CurrentStopID = stopID;
 }
