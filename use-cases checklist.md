@@ -5,12 +5,12 @@
 - [x] UC-T1: Register Transport Company
 - [x] UC-T2: Register Bus with Route
 - [x] UC-T3: Add Bus Stop
-- [ ] UC-T4: Connect Bus Stops
-- [ ] UC-T5: Update Bus Location
-- [ ] UC-T6: Find Shortest Path Between Stops (Dijkstra)
+- [x] UC-T4: Connect Bus Stops
+- [x] UC-T5: Update Bus Location
+- [x] UC-T6: Find Shortest Path Between Stops (Dijkstra)
 - [x] UC-T7: Search Bus by Number (Hash Table)
 - [ ] UC-T8: Find Nearest Bus to Location
-- [ ] UC-T9: Display Complete Bus Route (Linked List)
+- [x] UC-T9: Display Complete Bus Route (Linked List)
 - [x] UC-T10: View Route History (Stack)
 
 ## 2. Education Sector (11 use cases)
@@ -102,7 +102,7 @@
 
 ## Summary Progress
 
-- **Transport:** 5/10
+- **Transport:** 9/10
 - **Education:** 0/11
 - **Medical:** 0/12
 - **Commercial:** 0/6
@@ -112,4 +112,4 @@
 - **Bonus:** 0/5
 - **Admin:** 0/5
 
-**Total:** 10/71 use cases completed
+**Total:** 13/71 use cases completed

@@ -59,6 +59,7 @@ public:
     bool RegisterBus(const BusID& id, const CompanyID& companyId, const LinkedList<StopID>& route);
     bool RegisterStop(const StopID& stopID, const std::string& name, double lat, double lon);
     bool AddRoad(const StopID& sourceID, const StopID& destID);
+    LinkedList<std::string> FindShortestPath(const StopID& start, const StopID& end, double& outDistance);
 };
 
 #endif // !GUARD_TRANSPORTSERVICE_H

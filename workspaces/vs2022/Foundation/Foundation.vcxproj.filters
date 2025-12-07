@@ -7,5 +7,6 @@
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
 </Project>

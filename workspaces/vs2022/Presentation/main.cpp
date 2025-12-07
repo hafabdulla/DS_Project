@@ -33,6 +33,8 @@ void manageTransport(TransportService& service)
         cout << "5. Register Transport Company\n";
         cout << "6. Register New Bus\n";
         cout << "7. Add New Stop\n";
+        cout << "8. Connect Two Stops\n";
+        cout << "9. Find Shortest Path\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -190,6 +192,43 @@ void manageTransport(TransportService& service)
             else
             {
                 cout << "[Error] Stop ID already exists.\n";
+            }
+        }
+        else if (choice == 8)
+        {
+            string src, dest;
+            cout << "Enter Source Stop ID: "; cin >> src;
+            cout << "Enter Destination Stop ID: "; cin >> dest;
+
+            if (service.AddRoad(src, dest))
+                cout << "[Success] Road connected between " << src << " and " << dest << ".\n";
+            else
+                cout << "[Error] One or both stops do not exist.\n";
+        }
+        else if (choice == 9)
+        {
+            string src, dest;
+            cout << "Enter Start Stop ID: "; cin >> src;
+            cout << "Enter End Stop ID: "; cin >> dest;
+
+            double totalDist = 0.0;
+            LinkedList<string> path = service.FindShortestPath(src, dest, totalDist);
+
+            if (!path.empty())
+            {
+                cout << "\n[Shortest Path Found] Total Distance: " << totalDist << " km\n";
+                cout << "Route: ";
+                for (auto it = path.begin(); it != path.end(); ++it)
+                {
+                    cout << *it;
+                    auto nextIt = it;
+                    if (++nextIt != path.end()) cout << " -> ";
+                }
+                cout << endl;
+            }
+            else
+            {
+                cout << "[Result] No path found between " << src << " and " << dest << ".\n";
             }
         }
     }

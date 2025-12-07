@@ -199,3 +199,8 @@ bool TransportService::AddRoad(const StopID& sourceID, const StopID& destID)
 
     return false;
 }
+
+LinkedList<std::string> TransportService::FindShortestPath(const StopID& start, const StopID& end, double& outDistance)
+{
+    return m_Network.GetShortestPath(start, end, outDistance);
+}
