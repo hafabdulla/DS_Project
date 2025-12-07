@@ -8,70 +8,93 @@
 #include "../DS_Project/PriorityQueue.h"
 #include "../DS_Project/Transport.h"
 #include "../DS_Project/Population.h"
+#include "../DS_Project/Medical.h"
 using namespace std;
 int main() {
     cout << "\n╔════════════════════════════════════════════╗\n";
-    cout << "║    SMART CITY - POPULATION MODULE         ║\n";
+    cout << "║      SMART CITY - MEDICAL MODULE          ║\n";
     cout << "╚════════════════════════════════════════════╝\n";
 
-    PopulationModule population;
+    MedicalModule medical;
 
-    // ===== BUILD CITY HIERARCHY =====
-    cout << "\n--- Building City Hierarchy ---\n";
-    population.addSector("G-10");
-    population.addSector("F-8");
-    population.addSector("Blue Area");
-    population.addSector("G-9");
+    // ===== UC-M1: REGISTER HOSPITALS =====
+    cout << "\n--- Registering Hospitals ---\n";
+    medical.registerHospital("PIMS", "G-8", 12, "General, Cardiology");
+    medical.registerHospital("Shifa International", "H-8", 20, "Oncology, Surgery");
+    medical.registerHospital("Maroof Hospital", "F-10", 8, "Orthopedics");
+    medical.registerHospital("Poly Clinic", "G-6", 14, "General");
+    medical.registerHospital("Islamabad Medical", "I-8", 10, "Pediatrics");
 
-    population.addStreet("G-10", "Street 22");
-    population.addStreet("G-10", "Street 15");
-    population.addStreet("F-8", "Street 5");
-    population.addStreet("Blue Area", "Jinnah Avenue");
+    // Connect hospitals for routing
+    medical.connectHospitals("PIMS", "Shifa International", 5);
+    medical.connectHospitals("PIMS", "Poly Clinic", 3);
+    medical.connectHospitals("Shifa International", "Maroof Hospital", 7);
 
-    population.addHouse("G-10", "Street 22", "180");
-    population.addHouse("G-10", "Street 22", "182");
-    population.addHouse("F-8", "Street 5", "12");
+    // ===== UC-M2: REGISTER DOCTORS =====
+    cout << "\n--- Registering Doctors ---\n";
+    medical.registerDoctor("Ahmed Ali", "Cardiology", "PIMS");
+    medical.registerDoctor("Sara Khan", "Cardiology", "Shifa International");
+    medical.registerDoctor("Hassan Raza", "Orthopedics", "Maroof Hospital");
+    medical.registerDoctor("Fatima Noor", "Pediatrics", "Islamabad Medical");
+    medical.registerDoctor("Ali Zain", "Surgery", "Shifa International");
 
-    // ===== REGISTER CITIZENS =====
-    cout << "\n--- Registering Citizens ---\n";
-    population.registerCitizen("61101-1111111-1", "Ahmed Khan", 45, "Engineer", "G-10", "22", "180", "M");
-    population.registerCitizen("61101-2222222-2", "Fatima Zahra", 38, "Teacher", "F-8", "5", "12", "F");
-    population.registerCitizen("61101-3333333-3", "Ali Raza", 29, "Doctor", "G-9", "17", "90", "M");
-    population.registerCitizen("61101-4444444-4", "Sara Malik", 22, "Student", "F-8", "9", "33", "F");
-    population.registerCitizen("61101-5555555-5", "Hamza Noor", 50, "Business", "Blue Area", "1", "5", "M");
-    population.registerCitizen("61101-6666666-6", "Ayesha Ali", 16, "Student", "G-10", "22", "182", "F");
-    population.registerCitizen("61101-7777777-7", "Hassan Ahmed", 65, "Retired", "Blue Area", "1", "10", "M");
+    // ===== UC-M9: ADD MEDICINES =====
+    cout << "\n--- Adding Medicines to Pharmacies ---\n";
+    medical.addMedicine("Panadol", "Paracetamol", 50, "Sehat Pharmacy");
+    medical.addMedicine("Augmentin", "Co-Amoxiclav", 320, "D-Well Pharma");
+    medical.addMedicine("Brufen", "Ibuprofen", 120, "Medix Pharmacy");
+    medical.addMedicine("Zyrtec", "Cetirizine", 90, "CurePlus");
+    medical.addMedicine("Disprin", "Aspirin", 30, "HealthOne");
 
-    // ===== UC-H6: SEARCH BY CNIC =====
+    // ===== UC-M5: EMERGENCY BED AVAILABILITY =====
     cout << "\n========================================\n";
-    cout << "  UC-H6: Search Citizen by CNIC\n";
+    cout << "  UC-M5: Find Best Emergency Hospital\n";
     cout << "========================================\n";
-    population.searchByCNIC("61101-1111111-1");
-    population.searchByCNIC("61101-4444444-4");
-    population.searchByCNIC("99999-9999999-9");  // Not found
+    medical.displayEmergencyQueue();
+    medical.findBestEmergencyHospital();
 
-    // ===== UC-H1, H2, H3: DISPLAY HIERARCHY =====
+    // ===== UC-M4: UPDATE EMERGENCY BEDS =====
     cout << "\n========================================\n";
-    cout << "  UC-H1/H2/H3: City Hierarchy\n";
+    cout << "  UC-M4: Update Emergency Beds\n";
     cout << "========================================\n";
-    population.displayHierarchy();
+    cout << "Emergency! Patient admitted to Shifa International...\n";
+    medical.updateEmergencyBeds("Shifa International", 19);
+    medical.displayEmergencyQueue();
 
-    // ===== UC-H7: AGE DISTRIBUTION =====
-    cout << "\n========================================";
-    population.generateAgeDistribution();
+    // ===== UC-M7: SEARCH DOCTOR BY SPECIALIZATION =====
+    cout << "\n========================================\n";
+    cout << "  UC-M7: Search Doctors\n";
+    cout << "========================================\n";
+    medical.searchDoctorBySpecialization("Cardiology");
+    medical.searchDoctorBySpecialization("Pediatrics");
+    medical.searchDoctorBySpecialization("Neurology");  // Not found
 
-    // ===== UC-H8: OCCUPATION SUMMARY =====
-    cout << "\n========================================";
-    population.generateOccupationSummary();
+    // ===== UC-M10: SEARCH MEDICINE BY NAME =====
+    cout << "\n========================================\n";
+    cout << "  UC-M10: Search Medicine by Name\n";
+    cout << "========================================\n";
+    medical.searchMedicineByName("Panadol");
+    medical.searchMedicineByName("Brufen");
+    medical.searchMedicineByName("Crocin");  // Not found
 
-    // ===== UC-H10: GENDER RATIO =====
-    cout << "\n========================================";
-    population.generateGenderRatio();
+    // ===== UC-M11: SEARCH MEDICINE BY FORMULA =====
+    cout << "\n========================================\n";
+    cout << "  UC-M11: Search Medicine by Formula\n";
+    cout << "========================================\n";
+    medical.searchMedicineByFormula("Paracetamol");
+    medical.searchMedicineByFormula("Ibuprofen");
+
+    // ===== UC-M6: NEAREST HOSPITAL =====
+    cout << "\n========================================\n";
+    cout << "  UC-M6: Find Nearest Hospital\n";
+    cout << "========================================\n";
+    medical.findNearestHospital("PIMS", "Maroof Hospital");
 
     // ===== LIST ALL =====
-    population.listAllCitizens();
+    medical.listAllHospitals();
+    medical.listAllDoctors();
 
-    cout << "\n✅ POPULATION MODULE: ALL USE CASES WORKING!\n";
+    cout << "\n✅ MEDICAL MODULE: ALL USE CASES WORKING!\n";
 
     cout << "\nPress Enter to exit...";
     cin.get();
