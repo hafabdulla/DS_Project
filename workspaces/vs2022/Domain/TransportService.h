@@ -41,6 +41,7 @@ public:
 
     bool UpdateBusLocation(const BusID& busID, const StopID& stopID);
     bool RegisterCompany(const CompanyID& companyID);
+    bool RegisterBus(const BusID& id, const CompanyID& companyId, const LinkedList<StopID>& route);
 };
 
 #endif // !GUARD_TRANSPORTSERVICE_H

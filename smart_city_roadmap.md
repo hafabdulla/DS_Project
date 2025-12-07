@@ -12,7 +12,7 @@ Build vertical slices through the entire system to validate architecture and cor
 - [x] **UC-H6:** Search Citizen by CNIC (Hash Table)
 - [x] **UC-T9:** Display Complete Bus Route (Linked List)
 - [x] **UC-T10:** View Route History (Stack)
-- [ ] **UC-H1, UC-H2, UC-H3:** Build Sector Hierarchy (N-ary Tree)
+- [x] **UC-H1, UC-H2, UC-H3:** Build Sector Hierarchy (N-ary Tree)
 - [ ] **UC-E11:** Display School Hierarchy (N-ary Tree)
 - [ ] **UC-M5:** Find Hospital with Most Emergency Beds (Binary Max-Heap)
 - [ ] **UC-T6:** Find Shortest Path Between Bus Stops (Graph + Dijkstra)

@@ -2,8 +2,8 @@
 
 ## 1. Transport Sector (10 use cases)
 
-- [ ] UC-T1: Register Transport Company
-- [ ] UC-T2: Register Bus with Route
+- [x] UC-T1: Register Transport Company
+- [x] UC-T2: Register Bus with Route
 - [ ] UC-T3: Add Bus Stop
 - [ ] UC-T4: Connect Bus Stops
 - [ ] UC-T5: Update Bus Location
@@ -102,7 +102,7 @@
 
 ## Summary Progress
 
-- **Transport:** 2/10
+- **Transport:** 4/10
 - **Education:** 0/11
 - **Medical:** 0/12
 - **Commercial:** 0/6
@@ -112,4 +112,4 @@
 - **Bonus:** 0/5
 - **Admin:** 0/5
 
-**Total:** 6/71 use cases completed
+**Total:** 9/71 use cases completed

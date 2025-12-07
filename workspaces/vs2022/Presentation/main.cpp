@@ -31,6 +31,7 @@ void manageTransport(TransportService& service)
         cout << "3. View Scheduled Route\n";
         cout << "4. View Registered Companies\n";
         cout << "5. Register Transport Company\n";
+        cout << "6. Register New Bus\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -130,6 +131,36 @@ void manageTransport(TransportService& service)
             else
             {
                 cout << "[Error] Failed to register company (might already exist)\n";
+            }
+        }
+        else if (choice == 6)
+        {
+            string id, company, stopInput;
+            LinkedList<string> newRoute;
+
+            cout << "Enter New Bus ID: ";
+            cin >> id;
+            cout << "Enter Company ID: ";
+
+            clearInputBuffer();
+            getline(cin, company);
+
+            cout << "Enter Route Stops (type 'END' to finish):\n";
+            while (true)
+            {
+                cout << "Next Stop ID: ";
+                cin >> stopInput;
+                if (stopInput == "END") break;
+                newRoute.push_back(stopInput);
+            }
+
+            if (service.RegisterBus(id, company, newRoute)) 
+            {
+                cout << "[Success] Bus " << id << " registered successfully.\n";
+            }
+            else 
+            {
+                cout << "[Error] Failed. Bus ID might exist, route is empty, or a Stop ID is invalid.\n";
             }
         }
     }

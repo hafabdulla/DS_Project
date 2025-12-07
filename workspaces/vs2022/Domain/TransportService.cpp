@@ -110,3 +110,34 @@ bool TransportService::RegisterCompany(const CompanyID& companyID)
         return false;
     }
 }
+
+bool TransportService::RegisterBus(const BusID& id, const CompanyID& companyId, const LinkedList<StopID>& route)
+{
+    if (GetBus(id) != nullptr)
+    {
+        return false;
+    }
+
+    if (route.empty())
+    {
+        return false;
+    }
+
+    for (const auto& stopID : route)
+    {
+        if (GetStop(stopID) == nullptr)
+        {
+            return false;
+        }
+    }
+
+    StopID startLocation = route.front();
+    Bus newBus(id, companyId, startLocation);
+
+    LinkedList<StopID> routeCopy = route;
+    newBus.SetRoute(std::move(routeCopy));
+
+    m_Buses.push_back(std::move(newBus));
+
+    return true;
+}

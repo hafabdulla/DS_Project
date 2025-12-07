@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   Stack.h
- * @brief  Adapter for Deque.h to provide a stack interface.
+ * @brief  Adapter for LinkedList.h to provide a stack interface.
  * 
  * @author Fahad Hassan
  * @date   06 12 2025
@@ -9,20 +9,20 @@
 #ifndef GUARD_STACK_H
 #define GUARD_STACK_H
 
-#include "Deque.h"
+#include "LinkedList.h"
 
 template<typename T>
 class StackIterator;
 
 template<typename T>
-class Stack : private Deque<T>
+class Stack : private LinkedList<T>
 {
 public:
     Stack() = default;
     ~Stack() = default;
 
-    Stack(const Stack<T>& other)     : Deque<T>(other) {}
-    Stack(Stack<T>&& other) noexcept : Deque<T>(std::move(other)) {}
+    Stack(const Stack<T>& other)     : LinkedList<T>(other) {}
+    Stack(Stack<T>&& other) noexcept : LinkedList<T>(std::move(other)) {}
     Stack<T>& operator=(Stack<T> other);
 
     void push(const T& value);
@@ -50,13 +50,13 @@ void swap(Stack<T>& left, Stack<T>& right) noexcept;
 template<typename T>
 class StackIterator
 {
-    using DequeIter = DEQIterator<T>;
+    using LinkedListIter = LLIterator<T>;
 
 private:
-    DequeIter m_Iterator;
+    LinkedListIter m_Iterator;
 
 public:
-    StackIterator(DequeIter iter) : m_Iterator(iter) {}
+    StackIterator(LinkedListIter iter) : m_Iterator(iter) {}
 
     StackIterator<T>& operator++();
     StackIterator<T> operator++(int);
@@ -73,98 +73,98 @@ public:
 template<typename T>
 inline Stack<T>& Stack<T>::operator=(Stack<T> other)
 {
-    Deque<T>::operator=(std::move(other));
+    LinkedList<T>::operator=(std::move(other));
     return *this;
 }
 
 template<typename T>
 inline void Stack<T>::push(const T& value)
 {
-    Deque<T>::push_back(value);
+    LinkedList<T>::push_back(value);
 }
 
 template<typename T>
 inline void Stack<T>::push(T&& value)
 {
-    Deque<T>::push_back(std::move(value));
+    LinkedList<T>::push_back(std::move(value));
 }
 
 template<typename T>
 inline void Stack<T>::pop()
 {
-    Deque<T>::pop_back();
+    LinkedList<T>::pop_back();
 }
 
 template<typename T>
 template<typename ...Args>
 inline void Stack<T>::emplace(Args && ...args)
 {
-    Deque<T>::emplace_back(std::forward<Args>(args)...);
+    LinkedList<T>::emplace_back(std::forward<Args>(args)...);
 }
 
 template<typename T>
 inline T& Stack<T>::top()
 {
-    return Deque<T>::back();
+    return LinkedList<T>::back();
 }
 
 template<typename T>
 inline bool Stack<T>::empty() const noexcept
 {
-    return Deque<T>::empty();
+    return LinkedList<T>::empty();
 }
 
 template<typename T>
 inline std::size_t Stack<T>::size() const noexcept
 {
-    return Deque<T>::size();
+    return LinkedList<T>::size();
 }
 template<typename T>
 inline void Stack<T>::clear() noexcept
 {
-    Deque<T>::clear();
+    LinkedList<T>::clear();
 }
 
 template<typename T>
 inline void Stack<T>::swap(Stack<T>& other) noexcept
 {
-    Deque<T>::swap(other);
+    LinkedList<T>::swap(other);
 }
 
 template<typename T>
 inline StackIterator<T> Stack<T>::begin()
 {
-    return StackIterator<T>(Deque<T>::begin());
+    return StackIterator<T>(LinkedList<T>::begin());
 }
 
 template<typename T>
 inline StackIterator<T> Stack<T>::end()
 {
-    return StackIterator<T>(Deque<T>::end());
+    return StackIterator<T>(LinkedList<T>::end());
 }
 
 template<typename T>
 inline const StackIterator<T> Stack<T>::begin() const
 {
-    return StackIterator<T>(Deque<T>::begin());
+    return StackIterator<T>(LinkedList<T>::begin());
 }
 
 template<typename T>
 inline const StackIterator<T> Stack<T>::end() const
 {
-    return StackIterator<T>(Deque<T>::end());
+    return StackIterator<T>(LinkedList<T>::end());
 }
 
 template<typename T>
 inline const StackIterator<T> Stack<T>::cbegin() const
 {
-    return StackIterator<T>(Deque<T>::cbegin());
+    return StackIterator<T>(LinkedList<T>::cbegin());
 }
 
 template<typename T>
 inline const StackIterator<T> Stack<T>::cend() const
 {
-    return StackIterator<T>(Deque<T>::cend());
+    return StackIterator<T>(LinkedList<T>::cend());
 }
 
 template<typename T>
