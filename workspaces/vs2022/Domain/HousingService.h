@@ -17,7 +17,7 @@
 #include <Domain/IHousingRepository.h>
 #include <Domain/StringHash.h>
 
-class PopulationService
+class HousingService
 {
 private:
     IHousingRepository* m_Repository;
@@ -25,12 +25,12 @@ private:
     Tree<std::string, std::string> m_HousingData;
 
 public:
-    explicit PopulationService();
+    explicit HousingService();
 
-    PopulationService(const PopulationService&) = delete;
-    PopulationService& operator=(const PopulationService&) = delete;
+    HousingService(const HousingService&) = delete;
+    HousingService& operator=(const HousingService&) = delete;
 
-    ~PopulationService() = default;
+    ~HousingService() = default;
 
     const Person* GetCitizen(const std::string& cnic);
     void GetAgeDistribution(int& outChildren, int& outYoung, int& outAdults, int& outSeniors);
@@ -53,13 +53,13 @@ public:
 #endif // !GUARD_POPULATIONSERVICE_H
 
 template<typename Func>
-inline void PopulationService::TraverseHousingHierarchy(Func visit) const
+inline void HousingService::TraverseHousingHierarchy(Func visit) const
 {
     m_HousingData.PreOrderTraversal(visit);
 }
 
 template<typename Func>
-inline void PopulationService::TraverseOccupationSummary(Func visit)
+inline void HousingService::TraverseOccupationSummary(Func visit)
 {
     HashTable<std::string, int, StringHash> jobCounts(50);
 

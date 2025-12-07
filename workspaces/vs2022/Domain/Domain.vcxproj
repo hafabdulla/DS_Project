@@ -22,7 +22,7 @@
     <ClInclude Include="IHousingRepository.h" />
     <ClInclude Include="ITransportRepository.h" />
     <ClInclude Include="Person.h" />
-    <ClInclude Include="PopulationService.h" />
+    <ClInclude Include="HousingService.h" />
     <ClInclude Include="Stop.h" />
     <ClInclude Include="StringHash.h" />
     <ClInclude Include="TransportService.h" />
@@ -31,7 +31,7 @@
     <ClCompile Include="Bus.cpp" />
     <ClCompile Include="CNICHash.cpp" />
     <ClCompile Include="Person.cpp" />
-    <ClCompile Include="PopulationService.cpp" />
+    <ClCompile Include="HousingService.cpp" />
     <ClCompile Include="TransportService.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

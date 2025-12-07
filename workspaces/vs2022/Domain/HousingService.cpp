@@ -1,14 +1,14 @@
-#include <Domain/PopulationService.h>
+#include <Domain/HousingService.h>
 #include <Infrastructure/CHousingRepository.h>
 
-PopulationService::PopulationService()
+HousingService::HousingService()
 {
     m_Repository = new CHousingRepository();
     m_Persons = m_Repository->LoadPersonData("data/population.csv");
     m_HousingData = m_Repository->LoadHousingData("data/population.csv");
 }
 
-const Person* PopulationService::GetCitizen(const std::string& cnic)
+const Person* HousingService::GetCitizen(const std::string& cnic)
 {
     for (const auto& record : m_Persons)
     {
@@ -21,7 +21,7 @@ const Person* PopulationService::GetCitizen(const std::string& cnic)
     return nullptr;
 }
 
-void PopulationService::GetAgeDistribution(int& outChildren, int& outYoung, int& outAdults, int& outSeniors)
+void HousingService::GetAgeDistribution(int& outChildren, int& outYoung, int& outAdults, int& outSeniors)
 {
     outChildren = 0; // 0-18
     outYoung = 0;    // 19-35
@@ -43,7 +43,7 @@ void PopulationService::GetAgeDistribution(int& outChildren, int& outYoung, int&
     }
 }
 
-bool PopulationService::RegisterSector(const std::string& sectorName)
+bool HousingService::RegisterSector(const std::string& sectorName)
 {
     std::string rootKey = "Islamabad";
 
@@ -56,7 +56,7 @@ bool PopulationService::RegisterSector(const std::string& sectorName)
         return false;
 }
 
-bool PopulationService::RegisterStreet(const std::string& sectorName, const std::string& streetName)
+bool HousingService::RegisterStreet(const std::string& sectorName, const std::string& streetName)
 {
     if (m_HousingData.Contains(sectorName) == false)
     {
@@ -74,7 +74,7 @@ bool PopulationService::RegisterStreet(const std::string& sectorName, const std:
         return false;
 }
 
-bool PopulationService::RegisterHouse(const std::string& sectorName, const std::string& streetName, const std::string& houseNo)
+bool HousingService::RegisterHouse(const std::string& sectorName, const std::string& streetName, const std::string& houseNo)
 {
     std::string streetKey = sectorName + ":" + streetName;
     std::string houseKey = streetKey + ":" + houseNo;
@@ -91,7 +91,7 @@ bool PopulationService::RegisterHouse(const std::string& sectorName, const std::
         return false;
 }
 
-bool PopulationService::RegisterFamily(const std::string& sectorName, const std::string& streetName, const std::string& houseNo,
+bool HousingService::RegisterFamily(const std::string& sectorName, const std::string& streetName, const std::string& houseNo,
     const std::string& familyName)
 {
     std::string houseKey = sectorName + ":" + streetName + ":" + houseNo;
@@ -112,7 +112,7 @@ bool PopulationService::RegisterFamily(const std::string& sectorName, const std:
     return true;
 }
 
-bool PopulationService::RegisterIndividual(const std::string& sectorName, const std::string& streetName, const std::string& houseNo, const std::string& familyName, const Person& person)
+bool HousingService::RegisterIndividual(const std::string& sectorName, const std::string& streetName, const std::string& houseNo, const std::string& familyName, const Person& person)
 {
     std::string familyKey = sectorName + ":" + streetName + ":" + houseNo + ":" + familyName;
 

@@ -16,7 +16,7 @@
     <ClInclude Include="TransportService.h">
       <Filter>Transport</Filter>
     </ClInclude>
-    <ClInclude Include="PopulationService.h">
+    <ClInclude Include="HousingService.h">
       <Filter>Housing</Filter>
     </ClInclude>
     <ClInclude Include="Coordinate.h" />
@@ -41,7 +41,7 @@
     <ClCompile Include="Person.cpp">
       <Filter>Housing</Filter>
     </ClCompile>
-    <ClCompile Include="PopulationService.cpp">
+    <ClCompile Include="HousingService.cpp">
       <Filter>Housing</Filter>
     </ClCompile>
   </ItemGroup>
