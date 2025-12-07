@@ -21,6 +21,7 @@ public:
 
     virtual LinkedList<Stop> LoadStopData(const std::string& filePath) = 0;
     virtual LinkedList<Bus> LoadBusData(const std::string& filePath) = 0;
+    virtual LinkedList<CompanyID> LoadCompanyData(const std::string& filePath) = 0;
 };
 
 #endif // !GUARD_ITRANSPORTREPOSITORY_H

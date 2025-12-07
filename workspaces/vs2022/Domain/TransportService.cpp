@@ -36,12 +36,25 @@ Stop* TransportService::GetStop(const StopID& stopID) const
     return nullptr;
 }
 
+bool TransportService::Contains(const CompanyID& companyID) const
+{
+    for (auto& id : m_Companies)
+    {
+        if (id == companyID)
+            return true;
+    }
+    
+
+    return false;
+}
+
 TransportService::TransportService()
 {
     m_Repository = new CTransportRepository();
 
     m_Buses = m_Repository->LoadBusData("data/buses.csv");
     m_Stops = m_Repository->LoadStopData("data/stops.csv");
+    m_Companies = m_Repository->LoadCompanyData("data/buses.csv");
 }
 
 const LinkedList<std::string>* TransportService::GetBusRoute(const BusID& busID)
@@ -64,6 +77,11 @@ const Stack<std::string>* TransportService::GetBusRouteHistory(const BusID& busI
     return &bus->GetTravelHistory();
 }
 
+const LinkedList<CompanyID>* TransportService::GetRegisteredCompanies()
+{
+    return &m_Companies;
+}
+
 bool TransportService::UpdateBusLocation(const BusID& busID, const StopID& stopID)
 {
     Bus* bus = GetBus(busID);
@@ -78,4 +96,17 @@ bool TransportService::UpdateBusLocation(const BusID& busID, const StopID& stopI
 
     bus->MoveTo(stopID);
     return true;
+}
+
+bool TransportService::RegisterCompany(const CompanyID& companyID)
+{
+    if (!Contains(companyID))
+    {
+        m_Companies.push_back(companyID);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

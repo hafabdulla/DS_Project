@@ -1,20 +1,6 @@
 /*****************************************************************//**
  * @file   main.cpp
  * @brief  Application Entry Point (Presentation Layer).
- *
- * @author Fahad Hassan
- * @date   03 12 2025
- *********************************************************************/
-
-#include <iostream>
-#include <string>
-#include <Domain/TransportService.h>
-
-using namespace std;
-
-/*****************************************************************//**
- * @file   main.cpp
- * @brief  Application Entry Point (Presentation Layer).
  * Provides a console-based UI for Smart City Management.
  *
  * @author Fahad Hassan
@@ -28,12 +14,12 @@ using namespace std;
 
 using namespace std;
 
-void ClearInputBuffer()
+void clearInputBuffer()
 {
     cin.ignore(1000000, '\n');
 }
 
-void ManageTransport(TransportService& service) 
+void manageTransport(TransportService& service) 
 {
     int choice = -1;
 
@@ -43,6 +29,9 @@ void ManageTransport(TransportService& service)
         cout << "1. Update Bus Location\n";
         cout << "2. View Bus Route History\n";
         cout << "3. View Scheduled Route\n";
+        cout << "4. View Registered Companies\n";
+        cout << "5. Register Transport Company\n";
+
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
         cin >> choice;
@@ -50,7 +39,7 @@ void ManageTransport(TransportService& service)
         if (cin.fail()) 
         {
             cin.clear();
-            ClearInputBuffer();
+            clearInputBuffer();
             cout << "Invalid input. Please enter a number.\n";
             continue;
         }
@@ -114,10 +103,39 @@ void ManageTransport(TransportService& service)
                 cout << "[Info] No route found or invalid Bus ID.\n";
             }
         }
+        else if (choice == 4)
+        {
+            auto* companies = service.GetRegisteredCompanies();
+            int i = 1;
+
+            std::cout << '\n';
+            for (auto& company : *companies)
+            {
+                std::cout << "  " << i << ". " << company << '\n';
+                i++;
+            }
+        }
+        else if (choice == 5)
+        {
+            string companyId;
+            cout << "Enter Company ID: ";
+
+            clearInputBuffer();
+            getline(cin, companyId, '\n');
+
+            if (service.RegisterCompany(companyId))
+            {
+                cout << "[Success] Company registered.\n";
+            }
+            else
+            {
+                cout << "[Error] Failed to register company (might already exist)\n";
+            }
+        }
     }
 }
 
-void ManagePopulation(PopulationService& service) 
+void managePopulation(PopulationService& service) 
 {
     int choice = -1;
 
@@ -136,7 +154,7 @@ void ManagePopulation(PopulationService& service)
         if (cin.fail())
         {
             cin.clear();
-            ClearInputBuffer();
+            clearInputBuffer();
             cout << "Invalid input.\n";
             continue;
         }
@@ -247,17 +265,17 @@ int main()
 
         if (cin.fail()) {
             cin.clear();
-            ClearInputBuffer();
+            clearInputBuffer();
             cout << "Invalid input. Please enter a number.\n";
             continue;
         }
 
         switch (choice) {
         case 1:
-            ManageTransport(transportService);
+            manageTransport(transportService);
             break;
         case 2:
-            ManagePopulation(populationService);
+            managePopulation(populationService);
             break;
         case 0:
             cout << "Shutting down system. Goodbye!\n";

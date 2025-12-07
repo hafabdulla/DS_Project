@@ -13,8 +13,8 @@
 #include <Foundation/LinkedList.h>
 #include <Foundation/Stack.h>
 #include <Domain/Stop.h>
-#include <Domain/Company.h>
 
+typedef std::string CompanyID;
 typedef std::string BusID;
 
 class Bus

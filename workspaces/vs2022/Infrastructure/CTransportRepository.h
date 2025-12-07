@@ -21,6 +21,7 @@ public:
 
     LinkedList<Stop> LoadStopData(const std::string& filePath) override;
     LinkedList<Bus> LoadBusData(const std::string& filePath) override;
+    LinkedList<CompanyID> LoadCompanyData(const std::string& filePath) override;
 };
 
 #endif // !GUARD_CTRANSPORTREPOSITORY_H

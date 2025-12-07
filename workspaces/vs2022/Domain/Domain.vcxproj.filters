@@ -26,10 +26,8 @@
     <ClInclude Include="ITransportRepository.h">
       <Filter>Transport</Filter>
     </ClInclude>
-    <ClInclude Include="Company.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Company.cpp" />
     <ClCompile Include="TransportService.cpp">
       <Filter>Transport</Filter>
     </ClCompile>

@@ -18,7 +18,6 @@
   <ItemGroup>
     <ClInclude Include="Bus.h" />
     <ClInclude Include="CNICHash.h" />
-    <ClInclude Include="Company.h" />
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="IHousingRepository.h" />
     <ClInclude Include="ITransportRepository.h" />
@@ -30,7 +29,6 @@
   <ItemGroup>
     <ClCompile Include="Bus.cpp" />
     <ClCompile Include="CNICHash.cpp" />
-    <ClCompile Include="Company.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PopulationService.cpp" />
     <ClCompile Include="TransportService.cpp" />

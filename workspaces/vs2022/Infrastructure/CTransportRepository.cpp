@@ -136,3 +136,57 @@ LinkedList<Bus> CTransportRepository::LoadBusData(const std::string& filePath)
 
     return buses;
 }
+
+LinkedList<CompanyID> CTransportRepository::LoadCompanyData(const std::string& filePath)
+{
+    LinkedList<CompanyID> companies;
+    std::ifstream file(filePath);
+
+    if (!file.is_open())
+    {
+        throw std::runtime_error("Failed to open file: " + filePath);
+    }
+
+    std::string line;
+
+    if (!std::getline(file, line))
+    {
+        return companies;
+    }
+
+    while (std::getline(file, line))
+    {
+        if (line.empty() || line == "\r")
+            continue;
+
+        std::stringstream ss(line);
+        std::string busNo;
+        std::string companyName;
+
+        if (!std::getline(ss, busNo, ','))
+            continue;
+
+        if (!std::getline(ss, companyName, ','))
+            continue;
+
+        if (!companyName.empty() && companyName.back() == '\r')
+            companyName.pop_back();
+
+        bool exists = false;
+        for (const auto& existingCompany : companies)
+        {
+            if (existingCompany == companyName)
+            {
+                exists = true;
+                break;
+            }
+        }
+
+        if (!exists && !companyName.empty())
+        {
+            companies.push_back(companyName);
+        }
+    }
+
+    return companies;
+}
