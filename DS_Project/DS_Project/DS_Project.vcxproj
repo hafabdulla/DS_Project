@@ -129,6 +129,7 @@
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="Transport.h" />
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
