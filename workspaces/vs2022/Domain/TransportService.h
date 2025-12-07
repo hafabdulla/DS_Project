@@ -15,20 +15,7 @@
 #include <Foundation/Stack.h>
 #include <Domain/Bus.h>
 #include <Domain/ITransportRepository.h>
-
-struct StringHash 
-{
-    std::size_t operator()(const std::string& key) const 
-    {
-        std::size_t hash = 67; // six-seven!!!
-
-        for (char c : key) 
-        {
-            hash = ((hash << 5) + hash) + c;
-        }
-        return hash;
-    }
-};
+#include <Domain/StringHash.h>
 
 class TransportService
 {

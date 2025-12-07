@@ -269,6 +269,8 @@ void managePopulation(PopulationService& service)
         cout << "5. Register New Family\n";
         cout << "6. Register New Individual\n";
         cout << "7. View Population Hierarchy\n";
+        cout << "8. View Age Distribution Report\n";
+        cout << "9. View Occupation Summary\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -446,6 +448,31 @@ void managePopulation(PopulationService& service)
                 };
 
             service.TraverseHousingHierarchy(printNode);
+        }
+        else if (choice == 8)
+        {
+            int child, young, adult, senior;
+            service.GetAgeDistribution(child, young, adult, senior);
+
+            int total = child + young + adult + senior;
+            if (total == 0) total = 1;
+
+            cout << "\n--- Age Distribution Report ---\n";
+            cout << "Children (0-18): " << child << " (" << (child * 100 / total) << "%)\n";
+            cout << "Youth (19-35):   " << young << " (" << (young * 100 / total) << "%)\n";
+            cout << "Adults (36-60):  " << adult << " (" << (adult * 100 / total) << "%)\n";
+            cout << "Seniors (60+):   " << senior << " (" << (senior * 100 / total) << "%)\n";
+        }
+        else if (choice == 9)
+        {
+            cout << "\n--- Occupation Summary ---\n";
+
+            auto printJob = [](const string& job, int count)
+                {
+                    cout << "- " << job << ": " << count << endl;
+                };
+
+            service.TraverseOccupationSummary(printJob);
         }
     }
 }

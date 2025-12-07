@@ -21,6 +21,28 @@ const Person* PopulationService::GetCitizen(const std::string& cnic)
     return nullptr;
 }
 
+void PopulationService::GetAgeDistribution(int& outChildren, int& outYoung, int& outAdults, int& outSeniors)
+{
+    outChildren = 0; // 0-18
+    outYoung = 0;    // 19-35
+    outAdults = 0;   // 36-60
+    outSeniors = 0;  // 60+
+
+    for (const auto& entry : m_Persons)
+    {
+        int age = entry.value.GetAge();
+
+        if (age <= 18)
+            outChildren++;
+        else if (age <= 35)
+            outYoung++;
+        else if (age <= 60)
+            outAdults++;
+        else
+            outSeniors++;
+    }
+}
+
 bool PopulationService::RegisterSector(const std::string& sectorName)
 {
     std::string rootKey = "Islamabad";

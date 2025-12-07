@@ -66,8 +66,8 @@
 - [x] UC-H4: Register Family
 - [x] UC-H5: Register Individual
 - [x] UC-H6: Search Citizen by CNIC (Hash Table)
-- [ ] UC-H7: Generate Age Distribution Report
-- [ ] UC-H8: Generate Occupation Summary
+- [x] UC-H7: Generate Age Distribution Report
+- [x] UC-H8: Generate Occupation Summary
 - [ ] UC-H9: Calculate Population Density by Sector
 - [ ] UC-H10: Generate Gender Ratio Report
 - [ ] UC-H11: Find All Residents of a Sector
@@ -107,7 +107,7 @@
 - **Medical:** 0/12
 - **Commercial:** 0/6
 - **Public Facilities:** 0/
-- **Population & Housing:** 7/12
+- **Population & Housing:** 9/12
 - **Cross-Module:** 0/6
 - **Bonus:** 0/5
 - **Admin:** 0/5
