@@ -8,6 +8,19 @@
 
 #include <Domain/TransportService.h>
 
+Bus* TransportService::GetBus(std::string busID) const
+{
+    for (Bus& bus : m_Buses)
+    {
+        if (bus.GetBusID() == busID)
+        {
+            return &bus;
+        }
+    }
+
+    return nullptr;
+}
+
 TransportService::TransportService(IBusRepository* repository)
     : m_Repository(repository)
 {
@@ -23,13 +36,31 @@ void TransportService::Initialize()
 
 const LinkedList<std::string>* TransportService::GetBusRoute(const std::string& busID)
 {
-    for (const auto& bus : m_Buses)
-    {
-        if (bus.GetBusID() == busID)
-        {
-            return &bus.GetRoute();
-        }
-    }
+    Bus* bus = GetBus(busID);
 
-    return nullptr;
+    if (bus == nullptr)
+        return nullptr;
+
+    return &bus->GetRoute();
+}
+
+const Stack<std::string>* TransportService::GetBusRouteHistory(const std::string& busID)
+{
+    Bus* bus = GetBus(busID);
+
+    if (bus == nullptr)
+        return nullptr;
+
+    return &bus->GetTravelHistory();
+}
+
+bool TransportService::UpdateBusLocation(const std::string& busID, const std::string& newStop)
+{
+    Bus* bus = GetBus(busID);
+
+    if (bus == nullptr)
+        return false;
+
+    bus->MoveTo(newStop);
+    return true;
 }

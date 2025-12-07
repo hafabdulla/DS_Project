@@ -18,7 +18,7 @@ We follow a strict layered architecture with four core layers: Presentation, Inf
 
 ### 3. Domain Layer
 
-This layer encapsulates the core logic and data of the system. Note that each module folder (e.g.,  `Transport`, `Medical`) represents the domain layer.
+This layer encapsulates the core logic and data of the system. 
 
 Services and Model sub-layers are logical divisions and not represented in the directory structure.
 
@@ -36,23 +36,3 @@ Services and Model sub-layers are logical divisions and not represented in the d
 
 * **Role:** Bedrock of the system containing generic, reusable code.
 * **Responsibilities:** Pure implementations of Data Structures (LinkedList, Graph, etc.) and Generic Algorithms (Sorting) with zero domain knowledge.
-
-## Example Directory Structure
-
-```text
-SmartCity/
-├── Foundation/                  <-- Shared Generic Data Structures
-│   ├── LinkedList.h
-│   ├── Graph.h
-│   └── Stack.h
-├── Transport/                   <-- Feature Module
-│   ├── Bus.h                    <-- Model Entity
-│   ├── Stop.h                   <-- Model Entity
-│   └── TransportService.h       <-- Service Logic
-├── Medical/                     <-- Feature Module
-│   ├── Hospital.h               <-- Model Entity
-│   ├── Patient.h                <-- Model Entity
-│   └── MedicalService.h         <-- Service Logic
-└── Presentation/                <-- UI / Application Entry
-    ├── main.cpp
-    └── Menus/

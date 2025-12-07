@@ -31,7 +31,7 @@ class Deque
         Node* next;
 
         template<class... Args>
-        explicit Node(Args&&... args) : data(std::forward<Args>(args)...) {})
+        explicit Node(Args&&... args) : data(std::forward<Args>(args)...) {}
     };
 
     friend class DEQIterator<T>;
@@ -113,8 +113,8 @@ public:
     T* operator->() noexcept;
     const T* operator->() const noexcept;
 
-    bool operator==(const DEQIterator<T>& other) const;
-    bool operator!=(const DEQIterator<T>& other) const;
+    bool operator==(const DEQIterator<T>& other) const noexcept;
+    bool operator!=(const DEQIterator<T>& other) const noexcept;
 };
 
 template<typename T>
@@ -160,7 +160,7 @@ inline Deque<T>::Deque(Deque<T>&& other) noexcept
 }
 
 template<typename T>
-inline Deque<T>& Deque<T>::operator=(Deque<T> other) noexcept
+inline Deque<T>& Deque<T>::operator=(Deque<T> other)
 {
     swap(other);
     return *this;
@@ -288,6 +288,22 @@ inline void Deque<T>::pop_front()
 
     delete toDelete;
     m_Size--;
+}
+
+template<typename T>
+inline void Deque<T>::clear() noexcept
+{
+    Node* temp = m_Sentinel->next;
+
+    while (temp != m_Sentinel)
+    {
+        temp = temp->next;
+        delete temp->prev;
+    }
+
+    m_Sentinel->next = m_Sentinel;
+    m_Sentinel->prev = m_Sentinel;
+    m_Size = 0;
 }
 
 template<typename T>

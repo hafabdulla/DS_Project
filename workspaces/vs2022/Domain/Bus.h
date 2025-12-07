@@ -11,6 +11,7 @@
 
 #include <string>
 #include <Foundation/LinkedList.h>
+#include <Foundation/Stack.h>
 
 class Bus
 {
@@ -19,6 +20,7 @@ private:
     std::string m_Company;
     std::string m_CurrentLocation;
     LinkedList<std::string> m_Route;
+    Stack<std::string> m_TravelHistory;
 
 public:
     Bus() = default;
@@ -28,10 +30,12 @@ public:
     const std::string& GetCompany() const noexcept;
     const std::string& GetCurrentLocation() const noexcept;
     const LinkedList<std::string>& GetRoute() const noexcept;
+    const Stack<std::string>& GetTravelHistory() const noexcept;
 
     void SetRoute(LinkedList<std::string>&& route);
     void AddStop(const std::string& stopName);
     void SetCurrentLocation(const std::string& location);
+    void MoveTo(const std::string& stopName);
 };
 
 #endif // !GUARD_BUS_H

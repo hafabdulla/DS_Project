@@ -11,6 +11,7 @@
 
 #include <string>
 #include <Foundation/LinkedList.h>
+#include <Foundation/Stack.h>
 #include <Domain/Bus.h>
 #include <Domain/IBusRepository.h>
 
@@ -19,6 +20,9 @@ class TransportService
 private:
     IBusRepository* m_Repository;
     LinkedList<Bus> m_Buses;
+
+
+    Bus* GetBus(std::string busID) const;
 
 public:
     explicit TransportService(IBusRepository* repository);
@@ -31,6 +35,9 @@ public:
     void Initialize();
 
     const LinkedList<std::string>* GetBusRoute(const std::string& busID);
+    const Stack<std::string>* GetBusRouteHistory(const std::string& busID);
+
+    bool UpdateBusLocation(const std::string& busID, const std::string& newStop);
 };
 
 #endif // !GUARD_TRANSPORTSERVICE_H

@@ -4,5 +4,6 @@
     <ClInclude Include="Deque.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Stack.h" />
   </ItemGroup>
 </Project>
