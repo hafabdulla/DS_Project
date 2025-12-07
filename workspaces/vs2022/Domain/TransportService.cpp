@@ -204,3 +204,35 @@ LinkedList<std::string> TransportService::FindShortestPath(const StopID& start, 
 {
     return m_Network.GetShortestPath(start, end, outDistance);
 }
+
+bool TransportService::FindNearestBus(double userLat, double userLon, std::string& outBusID, double& outDistance)
+{
+    if (m_Buses.empty())
+        return false;
+
+    Coordinate userCoord(userLat, userLon);
+    double minDistance = std::numeric_limits<double>::max();
+    bool found = false;
+
+    for (const Bus& bus : m_Buses)
+    {
+        std::string currentStopID = bus.GetCurrentStopID();
+
+        if (m_Network.HasVertex(currentStopID))
+        {
+            Stop* stop = m_Network.GetVertex(currentStopID);
+
+            double dist = userCoord.DistanceTo(stop->getCoordinate());
+
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                outBusID = bus.GetID();
+                outDistance = dist;
+                found = true;
+            }
+        }
+    }
+
+    return found;
+}

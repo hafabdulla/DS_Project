@@ -9,7 +9,7 @@
 - [x] UC-T5: Update Bus Location
 - [x] UC-T6: Find Shortest Path Between Stops (Dijkstra)
 - [x] UC-T7: Search Bus by Number (Hash Table)
-- [ ] UC-T8: Find Nearest Bus to Location
+- [x] UC-T8: Find Nearest Bus to Location
 - [x] UC-T9: Display Complete Bus Route (Linked List)
 - [x] UC-T10: View Route History (Stack)
 

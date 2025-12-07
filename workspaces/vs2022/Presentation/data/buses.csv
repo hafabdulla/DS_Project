@@ -4,3 +4,6 @@ B102,CapitalTrans,Stop1,Stop1 > Stop5 > Stop8
 B201,GreenWheels,Stop6,Stop6 > Stop2 > Stop7 > Stop9
 B305,NorthFleet,Stop4,Stop4 > Stop10 > Stop11
 B402,SkyLine,Stop8,Stop8 > Stop6 > Stop3
+B501,MetroBus,Stop14,Stop14 > Stop12 > Stop13 > Stop3
+B502,UniShuttle,Stop16,Stop16 > Stop15 > Stop1 > Stop2
+B601,CapitalTrans,Stop12,Stop12 > Stop6 > Stop10 > Stop11

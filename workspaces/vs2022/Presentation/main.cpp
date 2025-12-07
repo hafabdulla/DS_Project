@@ -35,6 +35,7 @@ void manageTransport(TransportService& service)
         cout << "7. Add New Stop\n";
         cout << "8. Connect Two Stops\n";
         cout << "9. Find Shortest Path\n";
+        cout << "10. Find Nearest Bus\n";
 
         cout << "0. Back to Main Menu\n";
         cout << "Select an option: ";
@@ -229,6 +230,26 @@ void manageTransport(TransportService& service)
             else
             {
                 cout << "[Result] No path found between " << src << " and " << dest << ".\n";
+            }
+        }
+        else if (choice == 10)
+        {
+            double lat, lon;
+            cout << "Enter Your Latitude: "; cin >> lat;
+            cout << "Enter Your Longitude: "; cin >> lon;
+
+            string nearestBusID;
+            double distance = 0.0;
+
+            if (service.FindNearestBus(lat, lon, nearestBusID, distance))
+            {
+                cout << "\n[Result] Nearest Bus found!\n";
+                cout << "Bus ID:   " << nearestBusID << "\n";
+                cout << "Distance: " << distance << " km away\n";
+            }
+            else
+            {
+                cout << "[Result] No buses available or bus stops not found in network.\n";
             }
         }
     }
