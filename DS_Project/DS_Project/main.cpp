@@ -5,50 +5,53 @@
 #include "../DS_Project/HashTable.h"
 #include "../DS_Project/Tree.h"
 #include "../DS_Project/Graph.h"
+#include "../DS_Project/PriorityQueue.h"
 using namespace std;
 
 int main() {
-    cout << "=== Testing Graph with Dijkstra's Algorithm ===\n\n";
+    cout << "=== Testing Priority Queue (Emergency Beds) ===\n\n";
 
-    Graph cityMap;
+    PriorityQueue emergencyQueue;
 
-    cout << "--- Building City Network ---\n";
-    cityMap.addVertex("Faizabad");
-    cityMap.addVertex("Koral");
-    cityMap.addVertex("Bhara Kahu");
-    cityMap.addVertex("Blue Area");
-    cityMap.addVertex("PIMS Hospital");
-    cityMap.addVertex("F-8 Markaz");
+    cout << "--- Registering Hospitals with Bed Availability ---\n";
+    emergencyQueue.insert("PIMS Hospital", 12);
+    emergencyQueue.insert("Shifa International", 20);
+    emergencyQueue.insert("Maroof Hospital", 8);
+    emergencyQueue.insert("Poly Clinic", 14);
+    emergencyQueue.insert("Islamabad Medical", 10);
 
-    cout << "\n--- Adding Routes ---\n";
-    cityMap.addEdge("Faizabad", "Koral", 5);
-    cityMap.addEdge("Koral", "Bhara Kahu", 3);
-    cityMap.addEdge("Faizabad", "Blue Area", 7);
-    cityMap.addEdge("Bhara Kahu", "PIMS Hospital", 4);
-    cityMap.addEdge("Blue Area", "PIMS Hospital", 8);
-    cityMap.addEdge("Blue Area", "F-8 Markaz", 2);
-    cityMap.addEdge("PIMS Hospital", "F-8 Markaz", 6);
-
-    cityMap.display();
+    emergencyQueue.display();
 
     cout << "\n========================================\n";
-    cout << "  DIJKSTRA'S SHORTEST PATH TESTS\n";
+    cout << "  EMERGENCY SITUATION!\n";
     cout << "========================================\n";
 
-    // Test 1
-    cityMap.FindShortestPath("Faizabad", "PIMS Hospital");
+    // Ambulance needs hospital with most beds
+    cout << "\nAmbulance 1 needs emergency bed...\n";
+    HeapNode best = emergencyQueue.peek();
+    cout << "Best option: " << best.Name << " (" << best.priority << " beds available)\n";
 
-    // Test 2
-    cityMap.FindShortestPath("Faizabad", "F-8 Markaz");
+    cout << "\n--- Sending patient to " << best.Name << " ---\n";
+    HeapNode selected = emergencyQueue.extractMax();
+    cout << "Patient admitted to: " << selected.Name << "\n";
+    cout << "Beds used: 1\n";
 
-    // Test 3
-    cityMap.FindShortestPath("Koral", "Blue Area");
+    // Update bed count (one bed used)
+    emergencyQueue.insert(selected.Name, selected.priority - 1);
 
-    // Test 4 - No path
-    cityMap.addVertex("Rawalpindi");  // Isolated vertex
-    cityMap.FindShortestPath("Faizabad", "Rawalpindi");
+    cout << "\n--- Updated Hospital Status ---\n";
+    emergencyQueue.display();
 
-    cout << "\n✅ Dijkstra's Algorithm: WORKING!\n";
+    cout << "\n--- Another Emergency! ---\n";
+    HeapNode next = emergencyQueue.extractMax();
+    cout << "Next patient sent to: " << next.Name << " (" << next.priority << " beds)\n";
+
+    emergencyQueue.display();
+
+    cout << "\n--- Visualizing Heap Structure ---\n";
+    emergencyQueue.displayTree();
+
+    cout << "\n✅ Priority Queue: MAX-HEAP WORKING!\n";
 
     cout << "\nPress Enter to exit...";
     cin.get();
