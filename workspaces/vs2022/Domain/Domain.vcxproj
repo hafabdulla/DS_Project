@@ -20,7 +20,7 @@
     <ClInclude Include="CNICHash.h" />
     <ClInclude Include="Company.h" />
     <ClInclude Include="Coordinate.h" />
-    <ClInclude Include="IPersonRepository.h" />
+    <ClInclude Include="IHousingRepository.h" />
     <ClInclude Include="ITransportRepository.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PopulationService.h" />

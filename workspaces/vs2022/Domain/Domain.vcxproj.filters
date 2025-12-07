@@ -4,7 +4,7 @@
     <ClInclude Include="CNICHash.h">
       <Filter>Housing</Filter>
     </ClInclude>
-    <ClInclude Include="IPersonRepository.h">
+    <ClInclude Include="IHousingRepository.h">
       <Filter>Housing</Filter>
     </ClInclude>
     <ClInclude Include="Person.h">

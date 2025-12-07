@@ -1,16 +1,11 @@
 #include <Domain/PopulationService.h>
+#include <Infrastructure/CHousingRepository.h>
 
-PopulationService::PopulationService(IPersonRepository* repository)
-    : m_Repository(repository)
+PopulationService::PopulationService()
 {
-}
-
-void PopulationService::Initialize()
-{
-    if (m_Repository)
-    {
-        m_Persons = m_Repository->LoadAll();
-    }
+    m_Repository = new CHousingRepository();
+    m_Persons = m_Repository->LoadPersonData("data/population.csv");
+    m_HousingData = m_Repository->LoadHousingData("data/population.csv");
 }
 
 const Person* PopulationService::GetCitizen(const std::string& cnic)
@@ -22,4 +17,54 @@ const Person* PopulationService::GetCitizen(const std::string& cnic)
             return &record.value;
         }
     }
+
+    return nullptr;
+}
+
+bool PopulationService::RegisterSector(const std::string& sectorName)
+{
+    std::string rootKey = "Islamabad";
+
+    if (m_HousingData.Contains(sectorName) == false)
+    {
+        m_HousingData.AddChild(rootKey, sectorName, sectorName);
+        return true;
+    }
+    else
+        return false;
+}
+
+bool PopulationService::RegisterStreet(const std::string& sectorName, const std::string& streetName)
+{
+    if (m_HousingData.Contains(sectorName) == false)
+    {
+        return false;
+    }
+
+    std::string streetKey = sectorName + ":" + streetName;
+
+    if (m_HousingData.Contains(streetKey) == false)
+    {
+        m_HousingData.AddChild(sectorName, streetKey, streetKey);
+        return true;
+    }
+    else
+        return false;
+}
+
+bool PopulationService::RegisterHouse(const std::string& sectorName, const std::string& streetName, const std::string& houseNo)
+{
+    std::string streetKey = sectorName + ":" + streetName;
+    std::string houseKey = streetKey + ":" + houseNo;
+
+    if (!m_HousingData.Contains(streetKey))
+        throw std::invalid_argument("Error: Street " + streetName + " in " + sectorName + " does not exist.");
+
+    if (!m_HousingData.Contains(houseKey))
+    {
+        m_HousingData.AddChild(streetKey, houseKey, houseKey);
+        return true;
+    }
+    else
+        return false;
 }

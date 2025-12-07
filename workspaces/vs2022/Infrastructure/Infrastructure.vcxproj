@@ -11,11 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCsvPersonRepository.h" />
+    <ClInclude Include="CHousingRepository.h" />
     <ClInclude Include="CTransportRepository.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCsvPersonRepository.cpp" />
+    <ClCompile Include="CHousingRepository.cpp" />
     <ClCompile Include="CTransportRepository.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

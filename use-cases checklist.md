@@ -8,10 +8,10 @@
 - [ ] UC-T4: Connect Bus Stops
 - [ ] UC-T5: Update Bus Location
 - [ ] UC-T6: Find Shortest Path Between Stops (Dijkstra)
-- [ ] UC-T7: Search Bus by Number (Hash Table)
+- [x] UC-T7: Search Bus by Number (Hash Table)
 - [ ] UC-T8: Find Nearest Bus to Location
 - [ ] UC-T9: Display Complete Bus Route (Linked List)
-- [ ] UC-T10: View Route History (Stack)
+- [x] UC-T10: View Route History (Stack)
 
 ## 2. Education Sector (11 use cases)
 
@@ -60,12 +60,12 @@
 
 ## 6. Population & Housing Sector (12 use cases)
 
-- [ ] UC-H1: Add Sector (N-ary Tree)
-- [ ] UC-H2: Add Street to Sector (N-ary Tree)
-- [ ] UC-H3: Add House to Street (N-ary Tree)
+- [x] UC-H1: Add Sector (N-ary Tree)
+- [x] UC-H2: Add Street to Sector (N-ary Tree)
+- [x] UC-H3: Add House to Street (N-ary Tree)
 - [ ] UC-H4: Register Family
 - [ ] UC-H5: Register Individual
-- [ ] UC-H6: Search Citizen by CNIC (Hash Table)
+- [x] UC-H6: Search Citizen by CNIC (Hash Table)
 - [ ] UC-H7: Generate Age Distribution Report
 - [ ] UC-H8: Generate Occupation Summary
 - [ ] UC-H9: Calculate Population Density by Sector
@@ -102,14 +102,14 @@
 
 ## Summary Progress
 
-- **Transport:** 0/10 ☐
-- **Education:** 0/11 ☐
-- **Medical:** 0/12 ☐
-- **Commercial:** 0/6 ☐
-- **Public Facilities:** 0/4 ☐
-- **Population & Housing:** 0/12 ☐
-- **Cross-Module:** 0/6 ☐
-- **Bonus:** 0/5 ☐
-- **Admin:** 0/5 ☐
+- **Transport:** 2/10
+- **Education:** 0/11
+- **Medical:** 0/12
+- **Commercial:** 0/6
+- **Public Facilities:** 0/
+- **Population & Housing:** 4/12
+- **Cross-Module:** 0/6
+- **Bonus:** 0/5
+- **Admin:** 0/5
 
-**Total:** 0/71 use cases completed
+**Total:** 6/71 use cases completed
