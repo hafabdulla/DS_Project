@@ -3,10 +3,12 @@
  * @brief  Implementation of the Transport Domain Service.
  *
  * @author Fahad Hassan
- * @date   1 12 2025
+ * @date   07 12 2025
  *********************************************************************/
 
+#include <stdexcept>
 #include <Domain/TransportService.h>
+#include <Infrastructure/CCsvBusRepository.h>
 
 Bus* TransportService::GetBus(std::string busID) const
 {
@@ -21,16 +23,17 @@ Bus* TransportService::GetBus(std::string busID) const
     return nullptr;
 }
 
-TransportService::TransportService(IBusRepository* repository)
-    : m_Repository(repository)
+TransportService::TransportService()
 {
-}
+    m_Repository = new CCsvBusRepository("data/buses.csv");
 
-void TransportService::Initialize()
-{
     if (m_Repository)
     {
         m_Buses = m_Repository->LoadAll();
+    }
+    else
+    {
+        throw std::runtime_error("Failed to load Bus Repository");
     }
 }
 

@@ -15,11 +15,9 @@ using namespace std;
 
 int main()
 {
-    IBusRepository* busRepository = new CCsvBusRepository("data/buses.csv");
-    TransportService transportService(busRepository);
-    transportService.Initialize();
-
+    TransportService transportService;
     transportService.UpdateBusLocation("B402", "Stop6");
+
     const Stack<std::string>* history = transportService.GetBusRouteHistory("B402");
 
     for (auto& stop : (*history))

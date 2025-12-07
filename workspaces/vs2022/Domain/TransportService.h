@@ -21,18 +21,15 @@ private:
     IBusRepository* m_Repository;
     LinkedList<Bus> m_Buses;
 
-
     Bus* GetBus(std::string busID) const;
 
 public:
-    explicit TransportService(IBusRepository* repository);
+    explicit TransportService();
 
     TransportService(const TransportService&) = delete;
     TransportService& operator=(const TransportService&) = delete;
 
     ~TransportService() = default;
-
-    void Initialize();
 
     const LinkedList<std::string>* GetBusRoute(const std::string& busID);
     const Stack<std::string>* GetBusRouteHistory(const std::string& busID);
