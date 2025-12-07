@@ -7,92 +7,71 @@
 #include "../DS_Project/Graph.h"
 #include "../DS_Project/PriorityQueue.h"
 #include "../DS_Project/Transport.h"
+#include "../DS_Project/Population.h"
 using namespace std;
-
 int main() {
     cout << "\n╔════════════════════════════════════════════╗\n";
-    cout << "║     SMART CITY - TRANSPORT MODULE         ║\n";
+    cout << "║    SMART CITY - POPULATION MODULE         ║\n";
     cout << "╚════════════════════════════════════════════╝\n";
 
-    TransportModule transport;
+    PopulationModule population;
 
-    // ===== SETUP CITY NETWORK =====
-    cout << "\n--- Building City Network ---\n";
-    transport.addBusStop("Faizabad");
-    transport.addBusStop("Koral");
-    transport.addBusStop("Bhara Kahu");
-    transport.addBusStop("Blue Area");
-    transport.addBusStop("PIMS Hospital");
-    transport.addBusStop("F-8 Markaz");
+    // ===== BUILD CITY HIERARCHY =====
+    cout << "\n--- Building City Hierarchy ---\n";
+    population.addSector("G-10");
+    population.addSector("F-8");
+    population.addSector("Blue Area");
+    population.addSector("G-9");
 
-    cout << "\n--- Connecting Stops ---\n";
-    transport.connectStops("Faizabad", "Koral", 5);
-    transport.connectStops("Koral", "Bhara Kahu", 3);
-    transport.connectStops("Faizabad", "Blue Area", 7);
-    transport.connectStops("Bhara Kahu", "PIMS Hospital", 4);
-    transport.connectStops("Blue Area", "PIMS Hospital", 8);
-    transport.connectStops("Blue Area", "F-8 Markaz", 2);
+    population.addStreet("G-10", "Street 22");
+    population.addStreet("G-10", "Street 15");
+    population.addStreet("F-8", "Street 5");
+    population.addStreet("Blue Area", "Jinnah Avenue");
 
-    // ===== REGISTER BUSES =====
-    cout << "\n--- Registering Buses ---\n";
-    transport.registerBus("B101", "Metro Bus");
-    transport.registerBus("B102", "Capital Transport");
-    transport.registerBus("B201", "Green Wheels");
+    population.addHouse("G-10", "Street 22", "180");
+    population.addHouse("G-10", "Street 22", "182");
+    population.addHouse("F-8", "Street 5", "12");
 
-    // ===== ADD ROUTES TO BUSES =====
-    cout << "\n--- Setting Up Bus Routes ---\n";
-    transport.addStopToBus("B101", "Faizabad");
-    transport.addStopToBus("B101", "Koral");
-    transport.addStopToBus("B101", "Bhara Kahu");
-    transport.addStopToBus("B101", "PIMS Hospital");
+    // ===== REGISTER CITIZENS =====
+    cout << "\n--- Registering Citizens ---\n";
+    population.registerCitizen("61101-1111111-1", "Ahmed Khan", 45, "Engineer", "G-10", "22", "180", "M");
+    population.registerCitizen("61101-2222222-2", "Fatima Zahra", 38, "Teacher", "F-8", "5", "12", "F");
+    population.registerCitizen("61101-3333333-3", "Ali Raza", 29, "Doctor", "G-9", "17", "90", "M");
+    population.registerCitizen("61101-4444444-4", "Sara Malik", 22, "Student", "F-8", "9", "33", "F");
+    population.registerCitizen("61101-5555555-5", "Hamza Noor", 50, "Business", "Blue Area", "1", "5", "M");
+    population.registerCitizen("61101-6666666-6", "Ayesha Ali", 16, "Student", "G-10", "22", "182", "F");
+    population.registerCitizen("61101-7777777-7", "Hassan Ahmed", 65, "Retired", "Blue Area", "1", "10", "M");
 
-    transport.addStopToBus("B102", "Blue Area");
-    transport.addStopToBus("B102", "F-8 Markaz");
-
-    // ===== UC-T9: DISPLAY BUS ROUTE =====
+    // ===== UC-H6: SEARCH BY CNIC =====
     cout << "\n========================================\n";
-    cout << "  UC-T9: Display Complete Bus Route\n";
+    cout << "  UC-H6: Search Citizen by CNIC\n";
     cout << "========================================\n";
-    transport.displayBusRoute("B101");
-    transport.displayBusRoute("B102");
+    population.searchByCNIC("61101-1111111-1");
+    population.searchByCNIC("61101-4444444-4");
+    population.searchByCNIC("99999-9999999-9");  // Not found
 
-    // ===== UC-T10: ROUTE HISTORY =====
+    // ===== UC-H1, H2, H3: DISPLAY HIERARCHY =====
     cout << "\n========================================\n";
-    cout << "  UC-T10: Track Bus Movement\n";
+    cout << "  UC-H1/H2/H3: City Hierarchy\n";
     cout << "========================================\n";
-    transport.moveBus("B101", "Faizabad");
-    transport.moveBus("B101", "Koral");
-    transport.moveBus("B101", "Bhara Kahu");
+    population.displayHierarchy();
 
-    transport.showBusHistory("B101");
+    // ===== UC-H7: AGE DISTRIBUTION =====
+    cout << "\n========================================";
+    population.generateAgeDistribution();
 
-    // ===== UC-T7: SEARCH BUS =====
-    cout << "\n========================================\n";
-    cout << "  UC-T7: Search Bus by Number\n";
-    cout << "========================================\n";
-    transport.searchBus("B101");
-    transport.searchBus("B999");
+    // ===== UC-H8: OCCUPATION SUMMARY =====
+    cout << "\n========================================";
+    population.generateOccupationSummary();
 
-    // ===== UC-T6: SHORTEST PATH =====
-    cout << "\n========================================\n";
-    cout << "  UC-T6: Find Shortest Path\n";
-    cout << "========================================\n";
-    transport.findShortestPath("Faizabad", "PIMS Hospital");
-    transport.findShortestPath("Blue Area", "Bhara Kahu");
+    // ===== UC-H10: GENDER RATIO =====
+    cout << "\n========================================";
+    population.generateGenderRatio();
 
-    // ===== LIST ALL BUSES =====
-    cout << "\n========================================\n";
-    cout << "  All Registered Buses\n";
-    cout << "========================================\n";
-    transport.listAllBuses();
+    // ===== LIST ALL =====
+    population.listAllCitizens();
 
-    // ===== DISPLAY NETWORK =====
-    cout << "\n========================================\n";
-    cout << "  Complete City Network\n";
-    cout << "========================================\n";
-    transport.displayNetwork();
-
-    cout << "\n✅ TRANSPORT MODULE: ALL USE CASES WORKING!\n";
+    cout << "\n✅ POPULATION MODULE: ALL USE CASES WORKING!\n";
 
     cout << "\nPress Enter to exit...";
     cin.get();
