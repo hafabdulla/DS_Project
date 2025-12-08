@@ -45,7 +45,7 @@ public:
 		newNode->next = table[index];
 		table[index] = newNode;
 
-		cout << key << " -> " << value << "Inserted at index: " << index << endl;
+		cout << key << " -> " << value << " Inserted at index: " << index << endl;
 	}
 
 	string search(string key) {

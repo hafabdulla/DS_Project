@@ -6,6 +6,7 @@
 #include "../DS_Project/HashTable.h"
 #include "../DS_Project/LinkedList.h"
 #include "../DS_Project/Stack.h"
+#include "../DS_Project/CircularQueue.h"
 
 
 #include <iostream>
@@ -19,6 +20,7 @@ public:
 	string currentStop;
 	LinkedList route;
 	Stack routeHistory;
+	CircularQueue passengerQueue;
 
 	Bus(string n, string com):BusNumber(n), CompanyName(com), currentStop("Depot") {}
 	void AddStop(string stopName) {
@@ -30,15 +32,31 @@ public:
 	}
 
 	void displayRoute() {
-		cout << " Bus: --- " << BusNumber << " (" << CompanyName << ") ---\n";
+		cout << " Bus: " << BusNumber << " (" << CompanyName << ")\n";
 		cout << "Route: ";
 		route.display();
 		cout << "Current Location: " << currentStop << "\n";
 	}
 
 	void displayHistory() {
-		cout << " --- Route History for: " << BusNumber << " ---\n";
+		cout << "Route History for: " << BusNumber << "\n";
 		routeHistory.display();
+	}
+
+	void addPassenger(string passengerName) {
+		passengerQueue.enqueue(passengerName);
+	}
+
+	void boardPassenger() {
+		string passenger = passengerQueue.dequeue();
+		if (passenger != "") {
+			cout << "Pasenger: " << passenger << "boarded bus " << BusNumber << "\n";
+		}
+	}
+
+	void displayPassengerQueue() {
+		cout << "Passenger Queue for Bus " << BusNumber << endl;
+		passengerQueue.display();
 	}
 };
 
@@ -107,7 +125,7 @@ public:
 			cout << "Added " << stopName << " Stop to bus: " << busNumber << "\n";
 		}
 		else {
-			cout << "Bus: " << busNumber << "not found\n";
+			cout << "Bus: " << busNumber << " not found\n";
 		}
 	}
 
@@ -174,6 +192,59 @@ public:
 		{
 			cout << (i + 1) << ". Bus " << buses[i]->BusNumber << "(" << buses[i]->CompanyName << ") is at " << buses[i]->currentStop << endl;
 		}
+	}
+
+	void managePassengerQueue(string busNumber) {
+		Bus* bus = findBus(busNumber);
+		if (bus == nullptr) {
+			cout << "Bus: " << busNumber << " not found!\n";
+			return;
+		}
+
+		int choice;
+		do {
+			cout << "PASSENGER QUEUE MANAGEMENT\n";
+			cout << "Bus: " << busNumber << " (Current: " << bus->currentStop << ")\n";
+			cout << "[1] Add Passenger to Queue\n";
+			cout << "[2] Board Passenger (Dequeue)\n";
+			cout << "[3] View Next Passenger\n";
+			cout << "[4] Display Queue\n";
+			cout << "[5] Clear Queue\n";
+			cout << "[0] Back\n";
+			cout << "Choice: ";
+			cin >> choice;
+			cin.ignore();
+
+			switch (choice) {
+			case 1: {
+				cout << "Enter passenger name: ";
+				string name;
+				getline(cin, name);
+				bus->addPassenger(name);
+				break;
+			}
+			case 2:
+				bus->boardPassenger();
+				break;
+			case 3: {
+				string next = bus->passengerQueue.peek();
+				if (next != "") {
+					cout << "Next passenger: " << next << "\n";
+				}
+				break;
+			}
+			case 4:
+				bus->displayPassengerQueue();
+				break;
+			case 5:
+				bus->passengerQueue.clear();
+				break;
+			case 0:
+				break;
+			default:
+				cout << "Invalid choice!\n";
+			}
+		} while (choice != 0);
 	}
 };
 

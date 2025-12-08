@@ -123,12 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CircularQueue.h" />
+    <ClInclude Include="Commercial.h" />
+    <ClInclude Include="CSVParser.h" />
+    <ClInclude Include="DataLoader.h" />
+    <ClInclude Include="Education.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Medical.h" />
     <ClInclude Include="Population.h" />
     <ClInclude Include="PriorityQueue.h" />
+    <ClInclude Include="PublicFacilities.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Transport.h" />
