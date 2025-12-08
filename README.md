@@ -1,7 +1,14 @@
 # DS_Project
 Our Data Structures Project.
 
-## Our Repo Hierarchy:
+## Group Members:
+Hafiz Abdullah (23I0030)
+Fahad Hassan   (23I0835)
+Talha Bin Nasir(23I0830)
+
+## How to Run
+### Create a Visual Studio Project & Place the files in this way:
+
 ```
   SmartCity/
    ├── main.cpp
@@ -23,3 +30,5 @@ Our Data Structures Project.
    └── Utils/
        └── Helper functions
 ```
+
+
